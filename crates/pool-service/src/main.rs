@@ -1,4 +1,7 @@
+mod db;
+
 use clap::Parser;
+use db::fetch_an_integer;
 
 #[derive(clap::ValueEnum, Clone)]
 enum State {
@@ -22,10 +25,8 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-
+    fetch_an_integer().unwrap();
     if args.start {
         println!("start");
-        //service.run();
     }
-
 }
