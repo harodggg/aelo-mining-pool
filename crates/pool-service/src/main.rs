@@ -24,7 +24,8 @@ struct Args {
     stop: bool,
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args = Args::parse();
     fetch_an_integer().unwrap();
     if args.start {

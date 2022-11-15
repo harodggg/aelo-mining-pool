@@ -19,4 +19,14 @@ pub fn add_woker() -> Result<String, ()> {
     Ok("harold".to_string())
 }
 
+pub fn get_block() { 
 
+}
+
+pub fn get_blockhead() { 
+
+}
+
+pub fn get_worker() { 
+    
+}

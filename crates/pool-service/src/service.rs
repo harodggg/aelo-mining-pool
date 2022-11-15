@@ -1,3 +1,7 @@
-struct Service {}
+mod rpc;
 
-impl Service {}
+use rpc::block;
+
+async fn run_rpc_service() { 
+    
+}
