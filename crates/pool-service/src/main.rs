@@ -1,4 +1,5 @@
 mod db;
+mod rpc;
 
 use clap::Parser;
 use db::fetch_an_integer;

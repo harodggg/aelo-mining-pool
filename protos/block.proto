@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Block { 
+    rpc GetBlock (BlockRequest) returns (BlockRespone);
+}
+
+message BlockRequest { 
+    uint64 height = 1;
+}
+
+message BlockRespone{ 
+    uint64 difficult = 1;
+}
