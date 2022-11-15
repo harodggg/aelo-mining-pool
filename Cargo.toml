@@ -1,0 +1,6 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = ["crates/pool-service", "crates/pool-client", "crates/stratum"]
+
+[workspace.package]
+version = "0.0.1"
