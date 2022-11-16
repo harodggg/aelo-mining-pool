@@ -1,4 +1,9 @@
-use snarkvm::prelude::Testnet3;
+use core::str::FromStr;
+use snarkos_account::Account;
+use snarkos_node::Node;
+use snarkvm::prelude::{Network, PrivateKey, Testnet3, VM};
+use snarkvm_console_account::private_key::PrivateKey;
+use std::net::SocketAddr;
 
 #[warn(dead_code)]
 type CurrentNetwork = Testnet3;
@@ -6,8 +11,19 @@ type CurrentNetwork = Testnet3;
 const PRIVATE_KEY: &str = "APrivateKey1zkp7rs3Ls2qGjUKiTeEgP5DrLpowzXKgZ59uk4aGqWaNvev";
 const VIEW_KEY: &str = "AViewKey1eq6impGbR8JoGvmU45gSWR1KBMH1uVoLmLp9hK65LqG4";
 const ADDRESS: &str = "aleo1n3dx8azjks2vlnluyelxvzys5cd3tn3jqz4m82ln9g6uy4dsd5fq4qf5a9";
+const NODE_IP: &str = "0.0.0.0:4133";
+const BOOTSTRAP: [&str; 6] = [
+    "164.92.111.59:4133",
+    "159.223.204.96:4133",
+    "167.71.219.176:4133",
+    "157.245.205.209:4133",
+    "134.122.95.106:4133",
+    "161.35.24.55:4133",
+];
 
-fn run_prove() {}
+fn run_prover(node_ip: SocketAddr, peers: &[SocketAddr]) {
+    Node::new_prover(node_ip,  PrivateKey<CurrentNetwork>::from_str(PRIVATE_KEY) ,peers);
+}
 
 fn get_last_nosuiffict_prove() {}
 
