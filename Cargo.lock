@@ -576,6 +576,7 @@ dependencies = [
  "redis",
  "serde",
  "serde_json",
+ "stratum",
  "tokio",
  "tokio-stream",
  "tonic",

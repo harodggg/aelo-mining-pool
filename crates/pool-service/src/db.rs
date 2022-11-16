@@ -1,5 +1,3 @@
-use std::result;
-
 // redis
 use redis::Commands;
 

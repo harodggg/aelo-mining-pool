@@ -7,6 +7,7 @@ use stratum::{DifficultRequest, DifficultRespone};
 use stratum::{NotifyRequest, NotifyRespone};
 use stratum::{ShareRequest, ShareRespone};
 use stratum::{SubscribeRequest, SubscribeRespone};
+use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
 #[derive(Debug, Default)]
@@ -55,7 +56,20 @@ impl Stratum for AleoStratum {
         request: Request<ShareRequest>,
     ) -> Result<Response<ShareRespone>, Status> {
         println!("{:?}", request);
-        let respone = ShareRespone { id: 1 };
+        let respone = ShareRespone { id: 123 };
         Ok(Response::new(respone))
     }
+}
+
+pub async fn run_stratum_service() -> Result<(), Box<dyn std::error::Error>> {
+    let addr = "[::1]:50051".parse()?;
+    println!("Starting Stratum Service");
+
+    let stratum = AleoStratum::default();
+    Server::builder()
+        .add_service(StratumServer::new(stratum))
+        .serve(addr)
+        .await?;
+
+    Ok(())
 }

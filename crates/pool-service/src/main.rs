@@ -3,6 +3,7 @@ mod rpc;
 
 use clap::Parser;
 use db::fetch_an_integer;
+use stratum::run_stratum_service;
 
 #[derive(clap::ValueEnum, Clone)]
 enum State {
@@ -25,10 +26,12 @@ struct Args {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     fetch_an_integer().unwrap();
+    run_stratum_service().await?;
     if args.start {
         println!("start");
     }
+    Ok(())
 }
