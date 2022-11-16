@@ -1700,6 +1700,7 @@ version = "0.1.0"
 name = "pool-service"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "async-stream",
  "clap 4.0.24",
  "futures-core",
