@@ -1,8 +1,9 @@
 use core::str::FromStr;
 use snarkos_account::Account;
 use snarkos_node::Node;
-use snarkvm::prelude::{Network, PrivateKey, Testnet3, VM};
-use snarkvm_console_account::private_key::PrivateKey;
+use snarkvm::prelude::{Network, Testnet3, VM};
+use snarkvm_console_account::PrivateKey;
+
 use std::net::SocketAddr;
 
 #[warn(dead_code)]
@@ -22,7 +23,12 @@ const BOOTSTRAP: [&str; 6] = [
 ];
 
 fn run_prover(node_ip: SocketAddr, peers: &[SocketAddr]) {
-    Node::new_prover(node_ip,  PrivateKey<CurrentNetwork>::from_str(PRIVATE_KEY) ,peers);
+    Node::new_prover(
+        node_ip,
+        PrivateKey::<CurrentNetwork>::from_str(PRIVATE_KEY)?,
+        peers,
+    );
+    ()
 }
 
 fn get_last_nosuiffict_prove() {}

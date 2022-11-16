@@ -1712,6 +1712,7 @@ dependencies = [
  "snarkos-account",
  "snarkos-node",
  "snarkvm 0.9.7 (git+https://github.com/AleoHQ/snarkvm?branch=testnet3)",
+ "snarkvm-console-account 0.9.7 (git+https://github.com/AleoHQ/snarkvm?branch=testnet3)",
  "stratum",
  "tokio",
  "tokio-stream",
