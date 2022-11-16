@@ -4,3 +4,6 @@ members = ["crates/pool-service", "crates/pool-client", "crates/stratum"]
 
 [workspace.package]
 version = "0.0.1"
+[workspace.dependencies.snarkvm]
+version = "0.9.7"
+features = ["circuit", "console", "parallel"]
