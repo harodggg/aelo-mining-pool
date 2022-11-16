@@ -27,8 +27,6 @@ rand = "0.8.4"
 stratum = { path = "../stratum" }
 snarkvm = { git = "https://github.com/AleoHQ/snarkvm", branch = "testnet3" }
 snarkos-node = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
-snarkos-account = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
-snarkvm-console-account = { git = "https://github.com/AleoHQ/snarkvm", branch = "testnet3" }
 
 [build-dependencies]
 tonic-build = "0.8"
