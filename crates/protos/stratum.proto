@@ -5,7 +5,7 @@ package stratum ;
 service Stratum{
     rpc MiningSubscribe (SubscribeRequest) returns (SubscribeRespone);
     rpc MiningAuthorize (AuthorizeRequest) returns (AuthorizeRespone);
-    rpc MiningSetDifficulty (DifficultRequest) returns (DifficultRespone);
+    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
     rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
     rpc MiningShare (ShareRequest) returns (ShareRespone);
 }
