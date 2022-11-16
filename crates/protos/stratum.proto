@@ -12,7 +12,7 @@ service Stratum{
 
 message SubscribeRequest {
     uint32 id = 1;
-
+    
 }
 message SubscribeRespone {
     uint32 id = 1;              
