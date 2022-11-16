@@ -1,0 +1,20 @@
+syntax = "proto3";
+package work;
+
+service Working {
+    rpc Work (WorkingRequest) returns (WorkingResponse);
+}
+
+message WorkingRequest {
+  string url = 1;
+
+    enum Work {
+        UP = 0;
+        DOWN = 1;
+    }
+    Work vote = 2;    
+}
+
+message WorkingResponse {
+    string confirmation = 1;
+}

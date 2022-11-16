@@ -20,13 +20,15 @@ pub fn add_woker() -> Result<String, ()> {
 }
 
 pub fn get_block() { 
-
+    unimplemented!()
 }
 
 pub fn get_blockhead() { 
+    unimplemented!()
 
 }
 
 pub fn get_worker() { 
-    
+    unimplemented!()
+
 }

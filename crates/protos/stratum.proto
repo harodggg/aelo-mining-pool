@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package stratum ;
+
+service Stratum{
+    rpc MiningSubscribe (SubscribeRequest) returns (SubscribeRespone);
+    rpc MiningAuthorize (AuthorizeRequest) returns (AuthorizeRespone);
+    rpc MiningSetDifficulty (DifficultRequest) returns (DifficultRespone);
+    rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
+    rpc MiningShare (ShareRequest) returns (ShareRespone);
+}
+
+message SubscribeRequest {
+    uint32 id = 1;
+
+}
+message SubscribeRespone {
+    uint32 id = 1;              
+}
+
+message AuthorizeRequest {
+    uint32 id = 1;             
+
+}
+message AuthorizeRespone {
+    uint32 id = 1;
+}
+
+message DifficultRequest {
+    uint32 id = 1;
+    uint64 difficult = 2;
+}
+message DifficultRespone {
+    uint32 id = 1;
+}
+
+message NotifyRequest {
+    uint32 id = 1;
+}
+message NotifyRespone {
+    uint32 id = 1;
+}
+
+message ShareRequest {
+    uint32 id = 1;
+}
+message ShareRespone {
+    uint32 id = 1;
+}

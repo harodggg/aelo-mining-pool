@@ -837,6 +837,15 @@ dependencies = [
 [[package]]
 name = "stratum"
 version = "0.1.0"
+dependencies = [
+ "futures-core",
+ "futures-util",
+ "prost",
+ "serde",
+ "serde_json",
+ "tonic",
+ "tonic-build",
+]
 
 [[package]]
 name = "strsim"
