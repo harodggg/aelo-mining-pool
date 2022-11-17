@@ -6,6 +6,9 @@ use clap::Parser;
 use prover::run_prover;
 use stratum::run_stratum_service;
 
+use simple_log::LogConfigBuilder;
+use simple_log::{debug, warn};
+
 #[derive(clap::ValueEnum, Clone)]
 enum State {
     Run,
@@ -29,8 +32,22 @@ struct Args {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
+    let config = LogConfigBuilder::builder()
+        .path("./log/builder_log.log")
+        .size(1 * 100)
+        .roll_count(10)
+        .time_format("%Y-%m-%d %H:%M:%S.%f") //E.g:%H:%M:%S.%f
+        .level("debug")
+        .output_file()
+        .output_console()
+        .build();
+    simple_log::new(config)?;
+    debug!("test builder debug");
+
     run_prover().await;
+    warn!("Runing Prover");
     run_stratum_service().await?;
+    println!("Runing Stratum Service");
     if args.start {
         println!("start");
     }
