@@ -26,6 +26,7 @@ pub async fn run_prover() {
         SocketAddr::from_str(NODE_IP).unwrap(),
         PrivateKey::<CurrentNetwork>::from_str(PRIVATE_KEY).unwrap(),
         &[
+            SocketAddr::from_str(BOOTSTRAP[0]).unwrap(),
             SocketAddr::from_str(BOOTSTRAP[1]).unwrap(),
             SocketAddr::from_str(BOOTSTRAP[2]).unwrap(),
             SocketAddr::from_str(BOOTSTRAP[3]).unwrap(),
