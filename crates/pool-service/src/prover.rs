@@ -25,9 +25,16 @@ pub async fn run_prover() {
     Node::new_prover(
         SocketAddr::from_str(NODE_IP).unwrap(),
         PrivateKey::<CurrentNetwork>::from_str(PRIVATE_KEY).unwrap(),
-        &[SocketAddr::from_str(BOOTSTRAP[1]).unwrap()],
+        &[
+            SocketAddr::from_str(BOOTSTRAP[1]).unwrap(),
+            SocketAddr::from_str(BOOTSTRAP[2]).unwrap(),
+            SocketAddr::from_str(BOOTSTRAP[3]).unwrap(),
+            SocketAddr::from_str(BOOTSTRAP[4]).unwrap(),
+            SocketAddr::from_str(BOOTSTRAP[5]).unwrap(),
+        ],
     )
-    .await;
+    .await
+    .unwrap();
 }
 
 fn get_last_nosuiffict_prove() {}
