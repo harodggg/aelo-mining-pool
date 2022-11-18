@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
+simple-log = "1.6.0"
 redis = "0.22.1"
 tonic = "0.8"
 prost = "0.11"
