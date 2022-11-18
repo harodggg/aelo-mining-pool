@@ -1904,6 +1904,11 @@ dependencies = [
 [[package]]
 name = "pool-client"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.0.24",
+ "simple-log",
+]
 
 [[package]]
 name = "pool-service"
