@@ -7,7 +7,7 @@ use prover::run_prover;
 use stratum::run_stratum_service;
 
 use simple_log::LogConfigBuilder;
-use simple_log::{debug, warn};
+use simple_log::{debug, info, warn};
 
 #[derive(clap::ValueEnum, Clone)]
 enum State {
@@ -47,7 +47,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     run_prover().await;
     warn!("Runing Prover");
     run_stratum_service().await?;
-    println!("Runing Stratum Service");
+    info!("Runing Stratum Service");
     if args.start {
         println!("start");
     }
