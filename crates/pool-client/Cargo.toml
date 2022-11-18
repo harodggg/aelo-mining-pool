@@ -9,3 +9,4 @@ edition = "2021"
 clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
 simple-log = "1.6.0"
+snarkvm = { workspace = true }
