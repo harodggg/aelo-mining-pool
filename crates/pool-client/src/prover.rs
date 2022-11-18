@@ -16,7 +16,7 @@ pub fn try_coinbase_solution(
     to_nonce: u64,
     last_block: _,
     last_target: _,
-    state: &Arc<CoinBaseState>,
+    state: Arc<CoinBaseState>,
 ) -> Result<String> {
     for nonce in from..to {
         match state {
@@ -28,6 +28,7 @@ pub fn try_coinbase_solution(
             }
             Stop => {
                 info! {"Stopping Coinbase"}
+                break;
             }
         }
     }
