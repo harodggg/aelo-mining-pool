@@ -21,6 +21,7 @@ pub enum CoinbaseState {
     Runing,
     Stop,
 }
+impl CoinbaseState {}
 
 // todo! 改为多线程
 pub fn try_coinbase_solution<N: Network>(
@@ -40,9 +41,14 @@ pub fn try_coinbase_solution<N: Network>(
                 puzzle
                     .prove(epoch_challenge, address, nonce, Some(last_block))
                     .unwrap();
+                //todo! state.toRuning
             }
             CoinbaseState::Runing => {
                 info! {"Computing Coinbase Solution,the nonce is {}",nonce}
+                puzzle
+                    .prove(epoch_challenge, address, nonce, Some(last_block))
+                    .unwrap();
+                // todo!
             }
             CoinbaseState::Stop => {
                 info! {"Stopping Coinbase"}
@@ -51,3 +57,6 @@ pub fn try_coinbase_solution<N: Network>(
         }
     }
 }
+
+
+

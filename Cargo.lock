@@ -1909,6 +1909,7 @@ dependencies = [
  "clap 4.0.24",
  "simple-log",
  "snarkvm",
+ "stratum",
 ]
 
 [[package]]
