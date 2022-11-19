@@ -4,15 +4,15 @@
 [![Rust](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml)
 ![apache2](https://img.shields.io/hexpm/l/plug?logo=ALEO-MINING-POOL)
 
-## 1, Overview
+## Overview
 a mining pool for aleo
 
-## 2, Features
+## Features
 - pool 
 - worker
 
 
-## 3, Getting Started
+## Getting Started
 
 ### Rust Version
 
@@ -43,15 +43,15 @@ Via github issue is currently the only way to communicate.
 - stratum-pool
 - stratum-worker
 
-## 6, Contributing
+## Contributing
 :balloon: Thanks for your help improving the project! We are so happy to have
 you! We have a [contributing guide][guide] to help you get involved in the Tonic
 project.
 
-## 7, License
+## License
 This project is licensed under the [Apache2 license](LICENSE).
 
-## 8，Contribution
+## Contribution
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in Tonic by you, shall be licensed as Apache2, without any additional
 terms or conditions.
