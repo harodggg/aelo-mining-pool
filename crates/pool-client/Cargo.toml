@@ -6,6 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+stratum = { path = "../stratum" }
 clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
 simple-log = "1.6.0"

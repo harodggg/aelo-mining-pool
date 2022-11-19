@@ -11,7 +11,7 @@ use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
 #[derive(Debug, Default)]
-struct AleoStratum {}
+pub struct AleoStratum {}
 
 #[tonic::async_trait]
 impl Stratum for AleoStratum {
