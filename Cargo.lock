@@ -64,6 +64,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "aleo-pool"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-stream",
+ "clap 4.0.24",
+ "futures-core",
+ "futures-util",
+ "prost",
+ "rand",
+ "redis",
+ "serde",
+ "serde_json",
+ "simple-log",
+ "snarkos-node",
+ "snarkvm",
+ "stratum",
+ "tokio",
+ "tokio-stream",
+ "tonic",
+ "tonic-build",
+]
+
+[[package]]
 name = "aleo-std"
 version = "0.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -125,6 +149,17 @@ name = "aleo-std-timer"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7e4f181fc1a372e8ceff89612e5c9b13f72bff5b066da9f8d6827ae65af492c4"
+
+[[package]]
+name = "aleo-worker"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.0.24",
+ "simple-log",
+ "snarkvm",
+ "stratum",
+]
 
 [[package]]
 name = "android_system_properties"
@@ -1902,6 +1937,7 @@ dependencies = [
 ]
 
 [[package]]
+<<<<<<< HEAD
 name = "pool-client"
 version = "0.1.0"
 dependencies = [
@@ -1937,6 +1973,8 @@ dependencies = [
 ]
 
 [[package]]
+=======
+>>>>>>> dev
 name = "portable-atomic"
 version = "0.3.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"

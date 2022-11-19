@@ -1,5 +1,5 @@
 [package]
-name = "pool-service"
+name = "aleo-pool"
 version = "0.1.0"
 edition = "2021"
 
