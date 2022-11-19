@@ -12,8 +12,11 @@ todo
 
 
 ## 3, Getting Started
-todo
-
+### Ubunut
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y protobuf-compiler libprotobuf-dev
+```
 ## 4, Getting Help
 Via github issue is currently the only way to communicate.
 
