@@ -32,10 +32,10 @@ sudo apt install -y protobuf-compiler libprotobuf-dev
 ```bash
 brew install protobuf
 ```
-## 4, Getting Help
+## Getting Help
 Via github issue is currently the only way to communicate.
 
-## 5, Project Layout
+## Project Layout
 - aleo-pool
 - aleo-utils
 - aleo-worker
