@@ -12,7 +12,17 @@ todo
 
 
 ## 3, Getting Started
-### Ubunut
+
+### Rust Version
+
+`aleo mining pool` currently works on Rust `1.56` and above as it requires support for the 2018 edition.
+
+```bash
+rustup update
+cargo build
+```
+
+### Ubuntu
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y protobuf-compiler libprotobuf-dev
