@@ -3398,6 +3398,16 @@ dependencies = [
 [[package]]
 name = "stratum-worker"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "futures-core",
+ "futures-util",
+ "prost",
+ "serde",
+ "serde_json",
+ "tonic",
+ "tonic-build",
+]
 
 [[package]]
 name = "strsim"
