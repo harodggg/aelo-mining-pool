@@ -1,6 +1,5 @@
 mod prover;
 mod trace;
-mod utils;
 
 // use stratum::AleoStratum;
 

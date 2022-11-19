@@ -5,7 +5,7 @@ members = [
     "crates/aleo-worker",
     "crates/stratum-pool",
     "crates/stratum-worker",
-    "crates/aleo_utils",
+    "crates/aleo-utils",
 ]
 
 [workspace.package]
