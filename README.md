@@ -5,10 +5,11 @@
 ![apache2](https://img.shields.io/hexpm/l/plug?logo=ALEO-MINING-POOL)
 
 ## 1, Overview
-todo!
+a mining pool for aleo
 
 ## 2, Features
-todo
+- pool 
+- worker
 
 
 ## 3, Getting Started
