@@ -1,7 +1,7 @@
 ![AELO MINING POOL LOG](https://user-images.githubusercontent.com/31732456/202860434-d56edd97-d75a-4dde-a15b-178992a47cb8.png)
 
 # aelo-mining-pool(aleo is deliberately wrong)
-[![Rust](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml)
+[![Rust](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml/badge.svg)](https://github.com/harodggg/aelo-mining-pool/actions/workflows/rust.yml)
 ![apache2](https://img.shields.io/hexpm/l/plug?logo=ALEO-MINING-POOL)
 
 ## Overview
