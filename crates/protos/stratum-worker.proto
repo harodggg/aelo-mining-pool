@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package stratum_worker;
+
+service StratumWorker{
+    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
+    rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
+}
+
+message DifficultRequest {
+    uint32 id = 1;
+    uint64 difficult = 2;
+}
+message DifficultRespone {
+    uint32 id = 1;
+}
+
+message NotifyRequest {
+    uint32 id = 1;
+}
+message NotifyRespone {
+    uint32 id = 1;
+}

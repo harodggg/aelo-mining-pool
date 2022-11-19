@@ -1,20 +1,21 @@
-pub mod stratum {
-    tonic::include_proto!("stratum");
+pub mod stratum_pool {
+    tonic::include_proto!("stratum_pool");
 }
-use stratum::stratum_server::{Stratum, StratumServer};
-use stratum::{AuthorizeRequest, AuthorizeRespone};
-use stratum::{DifficultRequest, DifficultRespone};
-use stratum::{NotifyRequest, NotifyRespone};
-use stratum::{ShareRequest, ShareRespone};
-use stratum::{SubscribeRequest, SubscribeRespone};
+use anyhow::Result;
+use stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
+use stratum_pool::{AuthorizeRequest, AuthorizeRespone};
+use stratum_pool::{DifficultRequest, DifficultRespone};
+use stratum_pool::{NotifyRequest, NotifyRespone};
+use stratum_pool::{ShareRequest, ShareRespone};
+use stratum_pool::{SubscribeRequest, SubscribeRespone};
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
 #[derive(Debug, Default)]
-pub struct AleoStratum {}
+pub struct AleoStratumPool {}
 
 #[tonic::async_trait]
-impl Stratum for AleoStratum {
+impl StratumPool for AleoStratumPool {
     async fn mining_authorize(
         &self,
         request: Request<AuthorizeRequest>,
@@ -61,13 +62,13 @@ impl Stratum for AleoStratum {
     }
 }
 
-pub async fn run_stratum_service() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn run_stratum_service() -> Result<()> {
     let addr = "[::1]:50051".parse()?;
     println!("Starting Stratum Service");
 
-    let stratum = AleoStratum::default();
+    let stratum = AleoStratumPool::default();
     Server::builder()
-        .add_service(StratumServer::new(stratum))
+        .add_service(StratumPoolServer::new(stratum))
         .serve(addr)
         .await?;
 

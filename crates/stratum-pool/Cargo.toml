@@ -1,5 +1,5 @@
 [package]
-name = "stratum"
+name = "stratum-pool"
 version = "0.1.0"
 edition = "2021"
 
@@ -12,6 +12,7 @@ futures-core = "0.3"
 futures-util = "0.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+anyhow = "*"
 
 [build-dependencies]
 tonic-build = "0.8"

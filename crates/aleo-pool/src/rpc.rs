@@ -1,5 +1,5 @@
-use pool_service::block::block_server::{Block};
-use pool_service::block::{BlockRequest, BlockRespone};
+use aleo_pool::block::block_server::Block;
+use aleo_pool::block::{BlockRequest, BlockRespone};
 use tonic::{Request, Response, Status};
 
 #[derive(Debug, Default)]

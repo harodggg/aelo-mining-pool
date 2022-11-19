@@ -4,7 +4,7 @@ mod rpc;
 
 use clap::Parser;
 use prover::run_prover;
-use stratum::run_stratum_service;
+use stratum_pool::run_stratum_service;
 
 use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};

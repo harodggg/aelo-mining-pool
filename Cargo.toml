@@ -1,6 +1,11 @@
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [workspace]
-members = ["crates/aleo-pool", "crates/aleo-worker", "crates/stratum"]
+members = [
+    "crates/aleo-pool",
+    "crates/aleo-worker",
+    "crates/stratum-pool",
+    "crates/stratum-worker",
+]
 
 [workspace.package]
 version = "0.0.1"
