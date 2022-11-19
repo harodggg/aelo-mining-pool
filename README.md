@@ -27,6 +27,10 @@ cargo build
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y protobuf-compiler libprotobuf-dev
 ```
+### Mac
+```bash
+brew install protobuf
+```
 ## 4, Getting Help
 Via github issue is currently the only way to communicate.
 
