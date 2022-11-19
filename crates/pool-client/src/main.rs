@@ -1,14 +1,6 @@
 use clap::Parser;
 use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};
-
-#[derive(clap::ValueEnum, Clone)]
-enum State {
-    Run,
-    Stop,
-    Pause,
-}
-
 /// Aelo Mining pool service program
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -41,3 +33,4 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     Ok(())
 }
+
