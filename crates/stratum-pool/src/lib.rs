@@ -1,13 +1,13 @@
 pub mod stratum_pool {
     tonic::include_proto!("stratum_pool");
 }
+use crate::stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
+use crate::stratum_pool::{AuthorizeRequest, AuthorizeRespone};
+use crate::stratum_pool::{DifficultRequest, DifficultRespone};
+use crate::stratum_pool::{NotifyRequest, NotifyRespone};
+use crate::stratum_pool::{ShareRequest, ShareRespone};
+use crate::stratum_pool::{SubscribeRequest, SubscribeRespone};
 use anyhow::Result;
-use stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
-use stratum_pool::{AuthorizeRequest, AuthorizeRespone};
-use stratum_pool::{DifficultRequest, DifficultRespone};
-use stratum_pool::{NotifyRequest, NotifyRespone};
-use stratum_pool::{ShareRequest, ShareRespone};
-use stratum_pool::{SubscribeRequest, SubscribeRespone};
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 

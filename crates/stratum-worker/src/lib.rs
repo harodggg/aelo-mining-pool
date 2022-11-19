@@ -1,10 +1,10 @@
 pub mod stratum_worker {
     tonic::include_proto!("stratum_worker");
 }
+use crate::stratum_worker::stratum_worker_server::{StratumWorker, StratumWorkerServer};
+use crate::stratum_worker::{DifficultRequest, DifficultRespone};
+use crate::stratum_worker::{NotifyRequest, NotifyRespone};
 use anyhow::Result;
-use stratum_worker::stratum_worker_server::{StratumWorker, StratumWorkerServer};
-use stratum_worker::{DifficultRequest, DifficultRespone};
-use stratum_worker::{NotifyRequest, NotifyRespone};
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
