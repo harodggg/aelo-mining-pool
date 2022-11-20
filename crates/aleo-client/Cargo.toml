@@ -9,3 +9,4 @@ edition = "2021"
 stratum-pool = { path = "../stratum-pool" }
 snarkvm = { workspace = true }
 snarkos-node = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+
