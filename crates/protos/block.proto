@@ -3,7 +3,7 @@ syntax = "proto3";
 package block;
 
 service Block { 
-    rpc GetBlock (BlockRequest) returns (BlockRespone);
+    rpc SubmitLatestBlock (BlockRequest) returns (BlockRespone);
 }
 
 message BlockRequest { 
