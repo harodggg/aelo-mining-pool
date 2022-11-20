@@ -6,3 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+stratum-pool = { path = "../stratum-pool" }
+snarkvm = { workspace = true }
+snarkos-node = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+

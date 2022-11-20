@@ -66,6 +66,12 @@ dependencies = [
 [[package]]
 name = "aleo-client"
 version = "0.1.0"
+dependencies = [
+ "snarkos-node",
+ "snarkvm",
+ "stratum-pool",
+]
+
 
 [[package]]
 name = "aleo-pool"
