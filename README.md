@@ -5,7 +5,7 @@
 ![apache2](https://img.shields.io/hexpm/l/plug?logo=ALEO-MINING-POOL)
 
 ## Overview
-a mining pool for aleo
+a mining pool for aleo.The strutum protocol, the mining pool, and the full-node client are independent of each other and separated from each other.
 
 ## Features
 - pool 

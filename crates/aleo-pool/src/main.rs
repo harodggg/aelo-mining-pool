@@ -44,7 +44,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     simple_log::new(config)?;
     debug!("test builder debug");
 
-    run_prover().await;
+    //run_prover().await;
     warn!("Runing Prover");
     run_stratum_service().await?;
     info!("Runing Stratum Service");
