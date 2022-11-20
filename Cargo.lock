@@ -64,6 +64,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "aleo-client"
+version = "0.1.0"
+
+[[package]]
 name = "aleo-pool"
 version = "0.1.0"
 dependencies = [
@@ -86,6 +90,10 @@ dependencies = [
  "tonic",
  "tonic-build",
 ]
+
+[[package]]
+name = "aleo-prover"
+version = "0.1.0"
 
 [[package]]
 name = "aleo-std"

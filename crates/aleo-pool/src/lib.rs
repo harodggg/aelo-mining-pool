@@ -3,8 +3,11 @@ pub mod prover;
 pub mod block {
     tonic::include_proto!("block");
 }
+
 #[derive(Default)]
 struct PoolService {
+    name: String,
+    version: String,
     // todo!,1,启动stratum rpc 任务分发协议。
     // todo!,2，获取最新的块，最新的参数。
     // todo!,3, 接受client的注册。

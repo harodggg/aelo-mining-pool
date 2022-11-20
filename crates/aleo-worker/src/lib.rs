@@ -8,6 +8,8 @@ struct PoolClient<'a> {
     name: &'a str,
     //todo! change AleoStratum to AleoStratumWorker
     // stratum_client: AleoStratum,
+    version: &'a str,
+    
 }
 impl PoolClient<'_> {
     pub fn start_up() {
