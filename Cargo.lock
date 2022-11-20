@@ -72,7 +72,6 @@ dependencies = [
  "stratum-pool",
 ]
 
-
 [[package]]
 name = "aleo-pool"
 version = "0.1.0"
