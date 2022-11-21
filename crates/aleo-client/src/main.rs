@@ -1,4 +1,3 @@
-mod client;
 use simple_log::{info, log::debug, LogConfigBuilder};
 
 // todo 开放接口，将数据写到数据中，供mining pool读取。
