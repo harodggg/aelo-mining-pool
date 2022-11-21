@@ -1,6 +1,13 @@
 mod router;
 
-use crate::traits::NodeInterface;
+use crate::node_interface::NodeInterface;
+use anyhow::Result;
+use async_trait::async_trait;
+use colored::Colorize;
+use core::{marker::PhantomData, time::Duration};
+use parking_lot::RwLock;
+use rand::{rngs::OsRng, CryptoRng, Rng};
+use simple_log::{info, trace, warn};
 use snarkos_account::Account;
 use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
 use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
@@ -12,12 +19,6 @@ use snarkvm::prelude::{
     Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
     ProverSolution, ViewKey,
 };
-
-use anyhow::Result;
-use colored::Colorize;
-use core::{marker::PhantomData, time::Duration};
-use parking_lot::RwLock;
-use rand::{rngs::OsRng, CryptoRng, Rng};
 use std::{
     net::SocketAddr,
     sync::{

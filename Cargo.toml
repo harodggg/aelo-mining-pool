@@ -15,5 +15,3 @@ version = "0.0.1"
 [workspace.dependencies.snarkvm]
 version = "0.9.7"
 features = ["circuit", "console", "parallel"]
-
-
