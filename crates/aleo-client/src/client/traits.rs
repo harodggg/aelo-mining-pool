@@ -1,3 +1,4 @@
+use super::*;
 use async_trait::async_trait;
 use simple_log::error;
 use snarkos_node_messages::NodeType;

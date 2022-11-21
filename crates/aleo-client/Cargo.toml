@@ -39,6 +39,7 @@ snarkos-node-messages = { git = "https://github.com/AleoHQ/snarkOS.git", branch 
 snarkos-node-router = { path = "./router" }
 snarkos-account = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
 snarkos-node-tcp = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+snarkos-node-store = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
 
 [build-dependencies]
 tonic-build = "0.8"

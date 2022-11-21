@@ -1,0 +1,220 @@
+2022-11-21 21:12:36.878446000 [DEBUG] <client:22>:run prover
+2022-11-21 21:12:36.887404000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 21:12:36.887502000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 21:12:36.887515000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 21:12:36.887526000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 21:12:36.887860000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 21:12:36.887887000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 21:12:41.827354000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 21:12:41.827584000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 21:12:41.827652000 [DEBUG] <snarkos_node_router:133>:Connecting to 207.154.215.49:4133...
+2022-11-21 21:12:41.827984000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.831075000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 21:12:41.831121000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.831264000 [DEBUG] <snarkos_node_router:133>:Connecting to 46.101.114.158:4133...
+2022-11-21 21:12:41.831281000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.831511000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 21:12:41.831544000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.831736000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 21:12:41.831893000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:12:41.831958000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 21:12:41.832006000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.832209000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 21:12:41.832262000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:12:41.832397000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 21:12:41.832534000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 21:13:05.903331000 [DEBUG] <client:22>:run prover
+2022-11-21 21:13:05.915444000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 21:13:05.915662000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 21:13:05.915675000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 21:13:05.915685000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 21:13:05.917188000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 21:13:05.917210000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 21:13:10.059614000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 21:13:10.059890000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 21:13:10.060017000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.060127000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.060298000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.060414000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.060622000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 21:13:10.060673000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:13:10.060770000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.060892000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 21:13:10.060939000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:13:10.060975000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 21:13:10.061019000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:13:10.061259000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 21:13:10.061323000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 21:13:10.061353000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 21:13:10.061419000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 159.223.204.96:4133
+2022-11-21 21:13:10.061472000 [WARN] <snarkos_node_router:135>:entity already exists
+2022-11-21 21:13:10.061587000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 134.122.95.106:4133
+2022-11-21 21:13:10.061620000 [WARN] <snarkos_node_router:135>:entity already exists
+2022-11-21 21:13:10.065186000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 21:13:10.066994000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 21:14:05.046116000 [DEBUG] <client:22>:run prover
+2022-11-21 21:14:05.057817000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 21:14:05.057915000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 21:14:05.057927000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 21:14:05.057937000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 21:14:05.059058000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 21:14:05.059081000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 21:14:09.319102000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 21:14:09.319414000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.319568000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.319788000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.319940000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.320106000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 21:14:09.320192000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.320399000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.68.103.139:4133...
+2022-11-21 21:14:09.320624000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:14:09.320706000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 21:14:09.320787000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:14:09.320865000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 21:14:09.320956000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 21:14:09.321000000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 21:14:09.321037000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
+2022-11-21 21:14:09.321087000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 21:14:09.325006000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 21:14:09.326875000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 21:32:19.476860000 [DEBUG] <client:22>:run prover
+2022-11-21 21:32:19.487465000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 21:32:19.487574000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 21:32:19.487587000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 21:32:19.487609000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 21:32:19.488790000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 21:32:19.488820000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 21:32:23.549378000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 21:32:23.549650000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 21:32:23.549722000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.549998000 [DEBUG] <snarkos_node_router:133>:Connecting to 207.154.215.49:4133...
+2022-11-21 21:32:23.550125000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.550317000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:32:23.550352000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.550541000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 21:32:23.550616000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.550925000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.550955000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:32:23.551178000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
+2022-11-21 21:32:23.551243000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 21:32:23.553860000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 21:32:23.554520000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 21:37:26.938387000 [DEBUG] <client:22>:run prover
+2022-11-21 21:37:26.951342000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 21:37:26.951724000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 21:37:26.951737000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 21:37:26.951746000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 21:37:26.953422000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 21:37:26.953442000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 21:37:31.811377000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 21:37:31.811589000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 21:37:31.811663000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.811789000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.811900000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.811981000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
+2022-11-21 21:37:31.812011000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.812192000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.68.103.139:4133...
+2022-11-21 21:37:31.812273000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.812299000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 21:37:31.812322000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 21:37:31.812430000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 21:37:31.812459000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 21:37:31.812540000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 21:37:31.812662000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 21:37:31.812850000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 21:37:31.816901000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 21:37:31.818731000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 22:47:10.865641000 [DEBUG] <client:22>:run prover
+2022-11-21 22:47:10.874904000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 22:47:10.874996000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 22:47:10.875008000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 22:47:10.875018000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 22:47:10.875334000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4135
+2022-11-21 22:47:10.875355000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 22:47:14.649156000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 22:47:14.649424000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 22:47:14.649495000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.649739000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.649759000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.649893000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.650000000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 22:47:14.650037000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 22:47:14.650168000 [DEBUG] <snarkos_node_router:133>:Connecting to 207.154.215.49:4133...
+2022-11-21 22:47:14.650305000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 22:47:14.650399000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 22:47:14.650435000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 22:47:14.650477000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.650676000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:47:14.650904000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 22:47:14.650932000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 22:47:14.651212000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 22:47:14.651245000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 159.223.204.96:4133
+2022-11-21 22:47:14.651266000 [WARN] <snarkos_node_router:135>:entity already exists
+2022-11-21 22:47:14.651750000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 22:48:08.528635000 [DEBUG] <client:22>:run prover
+2022-11-21 22:48:08.545296000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 22:48:08.545373000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 22:48:08.545390000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 22:48:08.545403000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 22:48:08.546838000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4135
+2022-11-21 22:48:08.547264000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 22:48:14.684339000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 22:48:14.684648000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 22:48:14.684712000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 22:48:14.684744000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.684920000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.685116000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.685316000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.685470000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 22:48:14.685668000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.685767000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:14.685804000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 22:48:14.685843000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
+2022-11-21 22:48:14.685866000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 134.122.95.106:4133
+2022-11-21 22:48:14.685883000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 22:48:14.685925000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 22:48:14.686050000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 22:48:14.686097000 [WARN] <snarkos_node_router:135>:entity already exists
+2022-11-21 22:48:14.686132000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 22:48:14.686208000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 22:48:14.686753000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 22:48:46.469463000 [DEBUG] <client:22>:run prover
+2022-11-21 22:48:46.494192000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 22:48:46.494707000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 22:48:46.494793000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 22:48:46.494810000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 22:48:46.497259000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4135
+2022-11-21 22:48:46.497296000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 22:48:52.054341000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 22:48:52.054800000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.054973000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.055158000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.055317000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 22:48:52.055446000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
+2022-11-21 22:48:52.055568000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.055753000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.055895000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:48:52.055930000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-21 22:48:52.056003000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-21 22:48:52.056048000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
+2022-11-21 22:48:52.056100000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-21 22:48:52.056133000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-21 22:48:52.056204000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.68.103.139:4133...
+2022-11-21 22:48:52.056291000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
+2022-11-21 22:48:52.061840000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 22:48:52.063340000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 22:50:52.669433000 [DEBUG] <client:22>:run prover
+2022-11-21 22:50:52.678683000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 22:50:52.678762000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 22:50:52.678774000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 22:50:52.678784000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 22:50:52.679119000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4135
+2022-11-21 22:50:52.679188000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 22:50:57.058004000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 22:50:57.058265000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 22:50:57.058438000 [WARN] <client::client:173>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 22:50:57.058702000 [DEBUG] <snarkos_node_router:135>:Connecting to 134.122.95.106:4133...
+2022-11-21 22:50:57.058948000 [DEBUG] <snarkos_node_router:135>:Connecting to 161.35.24.55:4133...
+2022-11-21 22:50:57.058987000 [DEBUG] <snarkos_node_router:135>:Connecting to 159.223.204.96:4133...
+2022-11-21 22:50:57.060081000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 22:50:57.060685000 [WARN] <snarkos_node_router::routing:98>:Failed to send report

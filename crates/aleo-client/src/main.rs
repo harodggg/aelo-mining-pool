@@ -1,3 +1,6 @@
+mod client;
+use client::run_node_prover;
+use client::run_prover;
 use simple_log::{info, log::debug, LogConfigBuilder};
 
 // todo 开放接口，将数据写到数据中，供mining pool读取。
@@ -16,8 +19,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .output_console()
         .build();
     simple_log::new(config)?;
-    debug!("test builder debug");
-
+    debug!("run prover");
+    //run_prover().await;
+    run_prover().await?;
     info!("Runing Stratum Service");
     Ok(())
 }

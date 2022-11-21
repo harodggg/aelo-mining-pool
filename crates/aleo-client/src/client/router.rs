@@ -1,6 +1,8 @@
 use super::*;
 
-use snarkos_node_messages::{DisconnectReason, Message, MessageCodec};
+use simple_log::log::warn;
+use snarkos_node_messages::{DisconnectReason, Message, MessageCodec, PuzzleResponse};
+use snarkos_node_router::Router;
 use snarkos_node_tcp::{Connection, ConnectionSide, Tcp};
 use snarkvm::prelude::Network;
 

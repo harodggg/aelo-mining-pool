@@ -1,12 +1,11 @@
+mod traits;
+mod prover;
 mod router;
+pub use traits::*;
+pub use prover::*;
 
-use crate::node_interface::NodeInterface;
-use anyhow::Result;
 use async_trait::async_trait;
-use colored::Colorize;
-use core::{marker::PhantomData, time::Duration};
-use parking_lot::RwLock;
-use rand::{rngs::OsRng, CryptoRng, Rng};
+use traits::NodeInterface;
 use simple_log::{info, trace, warn};
 use snarkos_account::Account;
 use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
@@ -19,6 +18,12 @@ use snarkvm::prelude::{
     Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
     ProverSolution, ViewKey,
 };
+
+use anyhow::Result;
+use colored::Colorize;
+use core::{marker::PhantomData, time::Duration};
+use parking_lot::RwLock;
+use rand::{rngs::OsRng, CryptoRng, Rng};
 use std::{
     net::SocketAddr,
     sync::{
@@ -77,7 +82,8 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
         // Load the coinbase puzzle.
         let coinbase_puzzle = CoinbasePuzzle::<N>::load()?;
         // Compute the maximum number of puzzle instances.
-        let max_puzzle_instances = num_cpus::get().saturating_sub(2).min(6).max(1);
+        let max_puzzle_instances = 1;
+        // num_cpus::get().saturating_sub(2).min(6).max(1);
         // Initialize the node.
         let node = Self {
             account,
