@@ -1,4 +1,4 @@
-use crate::traits::NodeInterface;
+use aleo_client::traits::NodeInterface;
 use snarkos_account::Account;
 use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
 use snarkos_node_router::Routing;
