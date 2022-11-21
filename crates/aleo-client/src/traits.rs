@@ -1,13 +1,9 @@
 use async_trait::async_trait;
 use simple_log::error;
-use snarkos_node::Node::Prover;
-//use snarkos_node_messages::NodeType;
-use snarkos_node_messages::PuzzleRequest;
-//use snarkos_node_router::Routing;
+use snarkos_node_messages::NodeType;
+use snarkos_node_router::Routing;
 use snarkvm::prelude::{Address, Network, PrivateKey, ViewKey};
 
-use crate::node_type::NodeType;
-use snarkos_node_router::Routing;
 #[async_trait]
 pub trait NodeInterface<N: Network>: Routing<N> {
     /// Returns the node type.

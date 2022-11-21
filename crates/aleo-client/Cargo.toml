@@ -30,6 +30,7 @@ rand = "0.8.4"
 async-trait = "0.1"
 colored = "2.0.0"
 time = "0.3.17"
+num_cpus="1.14.0"
 parking_lot = "0.12.1"
 snarkvm = { workspace = true }
 snarkos-node = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }

@@ -1,7 +1,7 @@
 use aleo_client::traits::NodeInterface;
+use async_trait::async_trait;
 use snarkos_account::Account;
 use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
-use snarkos_node_router::Routing;
 use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
 use snarkos_node_tcp::{
     protocols::{Disconnect, Handshake, Reading, Writing},
@@ -17,6 +17,7 @@ use colored::Colorize;
 use core::{marker::PhantomData, time::Duration};
 use parking_lot::RwLock;
 use rand::{rngs::OsRng, CryptoRng, Rng};
+use simple_log::{debug, info, trace, warn};
 use std::{
     net::SocketAddr,
     sync::{

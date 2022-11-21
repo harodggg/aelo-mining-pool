@@ -1,5 +1,5 @@
-mod node_type;
 pub mod traits;
+
 use std::alloc;
 use std::str;
 use std::string;

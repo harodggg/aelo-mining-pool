@@ -106,7 +106,9 @@ impl<N: Network> Router<N> {
         // Initialize the TCP stack.
         let tcp = Tcp::new(Config::new(node_ip, max_peers)).await?;
         // Fetch the listening IP address.
-        let local_ip = tcp.listening_addr().expect("The listening address for this node must be present");
+        let local_ip = tcp
+            .listening_addr()
+            .expect("The listening address for this node must be present");
         // Initialize the router.
         Ok(Self {
             tcp,
@@ -183,7 +185,8 @@ impl<N: Network> Router<N> {
     /// Returns `true` if the given IP is this node.
     pub fn is_local_ip(&self, ip: &SocketAddr) -> bool {
         *ip == self.local_ip()
-            || (ip.ip().is_unspecified() || ip.ip().is_loopback()) && ip.port() == self.local_ip().port()
+            || (ip.ip().is_unspecified() || ip.ip().is_loopback())
+                && ip.port() == self.local_ip().port()
     }
 
     /// Returns `true` if the node is connected to the given IP.
@@ -292,7 +295,11 @@ impl<N: Network> Router<N> {
 
     /// Returns the list of metrics for the connected peers.
     pub fn connected_metrics(&self) -> Vec<(SocketAddr, NodeType)> {
-        self.connected_peers.read().iter().map(|(ip, peer)| (*ip, peer.node_type())).collect()
+        self.connected_peers
+            .read()
+            .iter()
+            .map(|(ip, peer)| (*ip, peer.node_type()))
+            .collect()
     }
 
     /// Returns the list of connected peers that are beacons.
@@ -309,7 +316,11 @@ impl<N: Network> Router<N> {
 
     /// Returns the oldest connected peer.
     pub fn oldest_connected_peer(&self) -> Option<SocketAddr> {
-        self.connected_peers.read().iter().min_by_key(|(_, peer)| peer.last_seen()).map(|(peer_ip, _)| *peer_ip)
+        self.connected_peers
+            .read()
+            .iter()
+            .min_by_key(|(_, peer)| peer.last_seen())
+            .map(|(peer_ip, _)| *peer_ip)
     }
 
     /// Inserts the given peer into the connected peers.
@@ -330,11 +341,15 @@ impl<N: Network> Router<N> {
     /// as the peer providing this list could be subverting the protocol.
     pub fn insert_candidate_peers(&self, peers: &[SocketAddr]) {
         // Compute the maximum number of candidate peers.
-        let max_candidate_peers = Self::MAXIMUM_CANDIDATE_PEERS.saturating_sub(self.number_of_candidate_peers());
+        let max_candidate_peers =
+            Self::MAXIMUM_CANDIDATE_PEERS.saturating_sub(self.number_of_candidate_peers());
         // Ensure the combined number of peers does not surpass the threshold.
         for peer_ip in peers.iter().take(max_candidate_peers) {
             // Ensure the peer is not itself, is not already connected, and is not restricted.
-            if self.is_local_ip(peer_ip) || self.is_connected(peer_ip) || self.is_restricted(peer_ip) {
+            if self.is_local_ip(peer_ip)
+                || self.is_connected(peer_ip)
+                || self.is_restricted(peer_ip)
+            {
                 continue;
             }
             // Proceed to insert each new candidate peer IP.
@@ -349,7 +364,9 @@ impl<N: Network> Router<N> {
         // Remove this peer from the candidate peers, if it exists.
         self.candidate_peers.write().remove(&peer_ip);
         // Add the peer to the restricted peers.
-        self.restricted_peers.write().insert(peer_ip, Instant::now());
+        self.restricted_peers
+            .write()
+            .insert(peer_ip, Instant::now());
     }
 
     /// Removes the connected peer and adds them to the candidate peers.
@@ -368,7 +385,11 @@ impl<N: Network> Router<N> {
     }
 
     /// Updates the connected peer with the given function.
-    pub fn update_connected_peer<Fn: FnMut(&mut Peer)>(&self, peer_ip: SocketAddr, mut write_fn: Fn) {
+    pub fn update_connected_peer<Fn: FnMut(&mut Peer)>(
+        &self,
+        peer_ip: SocketAddr,
+        mut write_fn: Fn,
+    ) {
         if let Some(peer) = self.connected_peers.write().get_mut(&peer_ip) {
             write_fn(peer)
         }

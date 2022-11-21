@@ -18,7 +18,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build();
     simple_log::new(config)?;
     debug!("test builder debug");
-    use client::Routing;
 
     info!("Runing Stratum Service");
     Ok(())
