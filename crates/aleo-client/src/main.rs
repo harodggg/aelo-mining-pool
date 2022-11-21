@@ -1,5 +1,5 @@
-
-use simple_log::{LogConfigBuilder, log::debug, info};
+mod client;
+use simple_log::{info, log::debug, LogConfigBuilder};
 
 // todo 开放接口，将数据写到数据中，供mining pool读取。
 // todo 可以通过 grpc 进行。使用3个grpc 服务进行通信。以实现代码分离和抽象。
@@ -18,6 +18,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build();
     simple_log::new(config)?;
     debug!("test builder debug");
+    use client::Routing;
 
     info!("Runing Stratum Service");
     Ok(())
+}

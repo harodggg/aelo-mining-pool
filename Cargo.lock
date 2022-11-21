@@ -69,6 +69,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-stream",
+ "async-trait",
  "futures-core",
  "futures-util",
  "prost",
@@ -78,6 +79,8 @@ dependencies = [
  "serde_json",
  "simple-log",
  "snarkos-node",
+ "snarkos-node-messages",
+ "snarkos-node-router 2.0.2",
  "snarkvm",
  "stratum-pool",
  "tokio",
@@ -541,6 +544,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ee52072ec15386f770805afd189a01c8841be8696bed250fa2f13c4c0d6dfb7"
 dependencies = [
  "generic-array",
+]
+
+[[package]]
+name = "circular-queue"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1d34327ead1c743a10db339de35fb58957564b99d248a67985c55638b22c59b5"
+dependencies = [
+ "version_check",
 ]
 
 [[package]]
@@ -1757,6 +1769,9 @@ name = "once_cell"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "86f0b0d4bf799edbc74508c1e8bf170ff5f41238e5f8225603ca7caaae2b7860"
+dependencies = [
+ "parking_lot_core 0.9.4",
+]
 
 [[package]]
 name = "opaque-debug"
@@ -2622,7 +2637,7 @@ checksum = "a507befe795404456341dfab10cef66ead4c041f62b8b11bbb92bffe5d0953e0"
 [[package]]
 name = "snarkos-account"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "anyhow",
  "colored",
@@ -2633,32 +2648,37 @@ dependencies = [
 [[package]]
 name = "snarkos-node"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "aleo-std",
  "anyhow",
  "async-trait",
+ "circular-queue",
+ "colored",
+ "futures-util",
+ "num_cpus",
  "parking_lot 0.12.1",
  "rand",
  "serde_json",
  "snarkos-account",
  "snarkos-node-consensus",
- "snarkos-node-executor",
  "snarkos-node-ledger",
  "snarkos-node-messages",
  "snarkos-node-rest",
- "snarkos-node-router",
+ "snarkos-node-router 2.0.2 (git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3)",
  "snarkos-node-store",
+ "snarkos-node-tcp",
  "snarkvm",
  "time 0.3.17",
  "tokio",
+ "tokio-util",
  "tracing",
 ]
 
 [[package]]
 name = "snarkos-node-consensus"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "anyhow",
  "indexmap",
@@ -2674,25 +2694,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "snarkos-node-executor"
-version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
-dependencies = [
- "anyhow",
- "async-trait",
- "indexmap",
- "num_cpus",
- "once_cell",
- "rayon",
- "serde",
- "tokio",
- "tracing",
-]
-
-[[package]]
 name = "snarkos-node-ledger"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "aleo-std",
  "anyhow",
@@ -2709,7 +2713,7 @@ dependencies = [
 [[package]]
 name = "snarkos-node-messages"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "anyhow",
  "bincode 1.3.3",
@@ -2717,7 +2721,6 @@ dependencies = [
  "kadmium",
  "rayon",
  "serde",
- "snarkos-node-executor",
  "snarkvm",
  "snow",
  "tokio",
@@ -2728,7 +2731,7 @@ dependencies = [
 [[package]]
 name = "snarkos-node-rest"
 version = "0.9.0"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "anyhow",
  "colored",
@@ -2741,7 +2744,7 @@ dependencies = [
  "snarkos-node-consensus",
  "snarkos-node-ledger",
  "snarkos-node-messages",
- "snarkos-node-router",
+ "snarkos-node-router 2.0.2 (git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3)",
  "snarkvm",
  "time 0.3.17",
  "tokio",
@@ -2752,7 +2755,6 @@ dependencies = [
 [[package]]
 name = "snarkos-node-router"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2760,13 +2762,43 @@ dependencies = [
  "bytes",
  "futures",
  "indexmap",
+ "linked-hash-map",
  "once_cell",
+ "parking_lot 0.12.1",
  "rand",
  "reqwest",
  "serde",
- "snarkos-node-executor",
  "snarkos-node-messages",
+ "snarkos-node-tcp",
  "snarkvm",
+ "time 0.3.17",
+ "tokio",
+ "tokio-stream",
+ "tokio-util",
+ "tracing",
+]
+
+[[package]]
+name = "snarkos-node-router"
+version = "2.0.2"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bincode 1.3.3",
+ "bytes",
+ "futures",
+ "indexmap",
+ "linked-hash-map",
+ "once_cell",
+ "parking_lot 0.12.1",
+ "rand",
+ "reqwest",
+ "serde",
+ "snarkos-node-messages",
+ "snarkos-node-tcp",
+ "snarkvm",
+ "time 0.3.17",
  "tokio",
  "tokio-stream",
  "tokio-util",
@@ -2776,7 +2808,7 @@ dependencies = [
 [[package]]
 name = "snarkos-node-store"
 version = "2.0.2"
-source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ac0a66cf735ca9678d4dc785b2ce80b9d5b8be57"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
 dependencies = [
  "aleo-std",
  "anyhow",
@@ -2787,6 +2819,21 @@ dependencies = [
  "rocksdb",
  "serde",
  "snarkvm",
+ "tracing",
+]
+
+[[package]]
+name = "snarkos-node-tcp"
+version = "2.0.2"
+source = "git+https://github.com/AleoHQ/snarkOS.git?branch=testnet3#ea36997d4873a365192e9dc1e75d128599254a9e"
+dependencies = [
+ "async-trait",
+ "bytes",
+ "futures-util",
+ "once_cell",
+ "parking_lot 0.12.1",
+ "tokio",
+ "tokio-util",
  "tracing",
 ]
 

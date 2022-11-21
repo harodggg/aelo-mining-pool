@@ -26,9 +26,12 @@ async-stream = "0.3.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 rand = "0.8.4"
+async-trait = "0.1"
 stratum-pool = { path = "../stratum-pool" }
 snarkvm = { workspace = true }
 snarkos-node = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+snarkos-node-messages = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+snarkos-node-router = { path = "./router" }
 
 [build-dependencies]
 tonic-build = "0.8"
