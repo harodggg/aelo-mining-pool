@@ -1,13 +1,16 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+use std::alloc;
+use std::str;
+use std::string;
+use std::usize;
+
+// 实现观察者模式。
+
+struct block {}
+
+pub trait Observer {
+    fn update();
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub trait Subject {
+    fn NotifyObserver();
 }

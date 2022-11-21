@@ -1,10 +1,8 @@
 mod db;
-mod prover;
 mod rpc;
 
 use clap::Parser;
-use prover::run_prover;
-use stratum_pool::run_stratum_service;
+use rpc::run_aleo_block;
 
 use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};
@@ -43,10 +41,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build();
     simple_log::new(config)?;
     debug!("test builder debug");
+    run_aleo_block().await;
 
-    //run_prover().await;
-    warn!("Runing Prover");
-    run_stratum_service().await?;
     info!("Runing Stratum Service");
     if args.start {
         println!("start");

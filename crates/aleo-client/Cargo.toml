@@ -3,7 +3,9 @@ name = "aleo-client"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "client"
+path = "./src/main.rs"
 
 [dependencies]
 stratum-pool = { path = "../stratum-pool" }
