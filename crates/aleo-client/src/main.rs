@@ -1,3 +1,4 @@
+
 use simple_log::{LogConfigBuilder, log::debug, info};
 
 // todo 开放接口，将数据写到数据中，供mining pool读取。
@@ -20,4 +21,3 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Runing Stratum Service");
     Ok(())
-}
