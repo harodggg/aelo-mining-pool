@@ -21,7 +21,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     simple_log::new(config)?;
     debug!("run prover");
     //run_prover().await;
-    run_prover().await?;
+    run_prover().await;
     info!("Runing Stratum Service");
     Ok(())
 }

@@ -218,3 +218,71 @@
 2022-11-21 22:50:57.058987000 [DEBUG] <snarkos_node_router:135>:Connecting to 159.223.204.96:4133...
 2022-11-21 22:50:57.060081000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
 2022-11-21 22:50:57.060685000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 23:33:04.056302000 [DEBUG] <client:22>:run prover
+2022-11-21 23:33:04.065577000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:33:04.065655000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:33:04.065667000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:33:04.065676000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:33:04.065995000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4135
+2022-11-21 23:33:04.066030000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:34:23.598981000 [DEBUG] <client:22>:run prover
+2022-11-21 23:36:15.774333000 [DEBUG] <client:22>:run prover
+2022-11-21 23:36:15.783650000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:36:15.783732000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:36:15.783745000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:36:15.783755000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:36:15.784088000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 23:36:15.784119000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:36:20.436334000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 23:36:20.436597000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 23:36:20.436908000 [WARN] <client::client:173>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 23:36:20.437227000 [DEBUG] <snarkos_node_router:135>:Connecting to 138.197.190.94:4133...
+2022-11-21 23:36:20.438073000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 23:36:20.438697000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 23:39:05.138451000 [DEBUG] <client:22>:run prover
+2022-11-21 23:39:05.147765000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:39:05.147858000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:39:05.147871000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:39:05.147880000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:39:05.148208000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 23:39:05.148228000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:39:09.554727000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 23:39:09.554860000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 23:39:09.555083000 [DEBUG] <snarkos_node_router:135>:Connecting to 134.122.95.106:4133...
+2022-11-21 23:39:09.555468000 [WARN] <client::client:173>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 23:39:09.556557000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 23:39:09.557209000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 23:39:13.392384000 [DEBUG] <client:22>:run prover
+2022-11-21 23:39:13.401078000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:39:13.401133000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:39:13.401147000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:39:13.401158000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:39:13.401325000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 23:39:13.401364000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:39:17.651618000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 23:39:34.823685000 [DEBUG] <client:22>:run prover
+2022-11-21 23:39:34.854106000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:39:34.854906000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:39:34.854921000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:39:34.854932000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:39:34.863516000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 23:39:34.863565000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:39:39.605182000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 23:39:39.605316000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 23:39:39.605597000 [WARN] <client::client:173>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 23:39:39.605876000 [DEBUG] <snarkos_node_router:135>:Connecting to 157.245.205.209:4133...
+2022-11-21 23:39:39.609790000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 23:39:39.610406000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
+2022-11-21 23:41:03.800715000 [DEBUG] <client:22>:run prover
+2022-11-21 23:41:03.809986000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-21 23:41:03.810066000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-21 23:41:03.810079000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-21 23:41:03.810089000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-21 23:41:03.810538000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-21 23:41:03.810584000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-21 23:41:08.813062000 [INFO] <client:25>:Runing Stratum Service
+2022-11-21 23:41:08.813262000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-21 23:41:08.813667000 [WARN] <client::client:173>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-21 23:41:08.813887000 [DEBUG] <snarkos_node_router:135>:Connecting to 134.122.95.106:4133...
+2022-11-21 23:41:08.814851000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-21 23:41:08.815490000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
