@@ -1,6 +1,8 @@
 mod client;
 pub use client::*;
-use snarkos_node::Node;
+
+#[macro_use]
+extern crate async_trait;
 
 // 实现观察者模式。
 struct block {}
@@ -10,5 +12,5 @@ pub trait Observer {
 }
 
 pub trait Subject {
-    fn NotifyObserver();
+    fn notifyObserver();
 }
