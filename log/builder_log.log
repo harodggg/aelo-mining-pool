@@ -509,37 +509,6 @@
 2022-11-22 23:59:13.168863000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
 2022-11-22 23:59:13.168893000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
 2022-11-22 23:59:29.336482000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
-2022-11-23 00:22:10.814955000 [DEBUG] <client:23>:run prover
-2022-11-23 00:22:10.837566000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
-2022-11-23 00:22:10.837640000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
-2022-11-23 00:22:10.837653000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
-2022-11-23 00:22:10.837662000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
-2022-11-23 00:22:10.838858000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
-2022-11-23 00:22:10.838898000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
-2022-11-23 00:22:26.875141000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
-2022-11-23 00:22:26.875629000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.875812000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.875983000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.876123000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
-2022-11-23 00:22:26.876146000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.68.103.139:4133...
-2022-11-23 00:22:26.876322000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.876426000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.197.190.94:4133...
-2022-11-23 00:22:26.876457000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.876489000 [DEBUG] <snarkos_node_router:133>:Connecting to 46.101.114.158:4133...
-2022-11-23 00:22:26.876503000 [DEBUG] <snarkos_node_router:133>:Connecting to 157.245.205.209:4133...
-2022-11-23 00:22:26.876567000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
-2022-11-23 00:22:26.876625000 [DEBUG] <snarkos_node_router:133>:Connecting to 138.68.103.139:4133...
-2022-11-23 00:22:26.876643000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 138.68.103.139:4133
-2022-11-23 00:22:26.876657000 [DEBUG] <snarkos_node_router:133>:Connecting to 161.35.24.55:4133...
-2022-11-23 00:22:26.876699000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
-2022-11-23 00:22:26.876717000 [WARN] <snarkos_node_router:135>:entity already exists
-2022-11-23 00:22:26.876731000 [WARN] <snarkos_node_tcp::tcp:309>:already connecting to 161.35.24.55:4133
-2022-11-23 00:22:26.876761000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
-2022-11-23 00:22:26.876904000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
-2022-11-23 00:22:26.876936000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
-2022-11-23 00:22:26.876974000 [DEBUG] <snarkos_node_router:133>:Connecting to 207.154.215.49:4133...
-2022-11-23 00:22:26.877020000 [WARN] <snarkos_node_router:135>:entity already exists
-2022-11-23 00:22:26.879164000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
 2022-11-23 00:22:26.879933000 [WARN] <snarkos_node_router::routing:98>:Failed to send report
 2022-11-23 00:38:35.924437000 [DEBUG] <client:23>:run prover
 2022-11-23 00:38:35.933706000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
@@ -1083,56 +1052,7 @@
 2022-11-23 16:24:43.559162000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80731, Coinbase Target 25107842, Proof Target 196156)
 2022-11-23 16:24:44.988552000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
 2022-11-23 16:24:53.990626000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:02.991908000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:08.717411000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80732, Coinbase Target 24107839, Proof Target 188343)
-2022-11-23 16:25:12.002539000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:21.008063000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:30.015690000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:34.043846000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80734, Coinbase Target 23980333, Proof Target 187347)
-2022-11-23 16:25:39.017647000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:48.019951000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:57.022689000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:25:58.688736000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80736, Coinbase Target 25317957, Proof Target 197797)
-2022-11-23 16:26:06.028323000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:26:15.041291000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:26:23.660878000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80738, Coinbase Target 25181585, Proof Target 196732)
-2022-11-23 16:26:24.042609000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:26:33.044216000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:26:42.050391000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:26:48.771639000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80739, Coinbase Target 24113390, Proof Target 188386)
-2022-11-23 16:26:51.059846000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:00.062229000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:09.068669000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:13.668391000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80741, Coinbase Target 23725764, Proof Target 185358)
-2022-11-23 16:27:18.073962000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:27.082835000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:36.085329000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:38.683518000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80743, Coinbase Target 23664096, Proof Target 184876)
-2022-11-23 16:27:45.088315000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:27:54.096360000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:03.104748000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:03.705608000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80744, Coinbase Target 24315133, Proof Target 189962)
-2022-11-23 16:28:12.112654000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:21.120702000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:29.091426000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80746, Coinbase Target 23924263, Proof Target 186909)
-2022-11-23 16:28:30.122604000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:39.126992000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:48.133808000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:28:53.936957000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80748, Coinbase Target 23795398, Proof Target 185902)
-2022-11-23 16:28:57.135937000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:06.137717000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:15.155688000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:18.922081000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80750, Coinbase Target 23412883, Proof Target 182914)
-2022-11-23 16:29:24.158423000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:33.159325000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:42.161217000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:29:43.821210000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80751, Coinbase Target 24057008, Proof Target 187946)
-2022-11-23 16:29:51.164748000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:30:00.170141000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:30:08.815201000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80753, Coinbase Target 23992218, Proof Target 187440)
-2022-11-23 16:30:09.172459000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:30:18.174188000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
-2022-11-23 16:30:27.175452000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
+d[DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
 2022-11-23 16:30:33.742501000 [INFO] <snarkos_node::prover::router:111>:Current(Epoch 315, Block 80755, Coinbase Target 23670422, Proof Target 184926)
 2022-11-23 16:30:36.177978000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
 2022-11-23 16:30:45.181134000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.176:4133, 164.88.251.17:4133]
@@ -1424,3 +1344,4 @@
 2022-11-23 16:57:49.280431000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 35.228.68.228:4133
 2022-11-23 16:57:49.280467000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 35.228.68.228:4133
 2022-11-23 16:57:49.280493000 [INFO] <snarkos_node::prover:169>:Node has shut down.
+
