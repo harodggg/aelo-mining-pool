@@ -8,6 +8,7 @@ members = [
     "crates/aleo-utils",
     "crates/aleo-prover",
     "crates/aleo-client",
+"crates/tests",
 ]
 
 [workspace.package]

@@ -21,9 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build();
     simple_log::new(config)?;
     debug!("run prover");
-    runtime().block_on(async move {
-        run_node_prover().await;
-    });
-
+    run_node_prover().await?;
+    std::future::pending::<()>().await;
     Ok(())
 }
