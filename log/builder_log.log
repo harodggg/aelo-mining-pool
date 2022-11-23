@@ -1345,3 +1345,111 @@ d[DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [167.71.219.1
 2022-11-23 16:57:49.280467000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 35.228.68.228:4133
 2022-11-23 16:57:49.280493000 [INFO] <snarkos_node::prover:169>:Node has shut down.
 
+2022-11-23 17:31:47.750461000 [DEBUG] <client:23>:run prover
+2022-11-23 17:31:47.764851000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-23 17:31:47.764977000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-23 17:31:47.764996000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-23 17:31:47.765011000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-23 17:31:47.765451000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-23 17:31:47.765481000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-23 17:31:52.033100000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-23 17:31:52.033330000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.033464000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.033650000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.033851000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.033950000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.034036000 [DEBUG] <snarkos_node_router:133>:Connecting to 134.122.95.106:4133...
+2022-11-23 17:31:52.034280000 [DEBUG] <snarkos_node_router:133>:Connecting to 167.71.219.176:4133...
+2022-11-23 17:31:52.034320000 [WARN] <snarkos_node::prover:189>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 17:31:52.034366000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-23 17:31:52.034879000 [DEBUG] <hyper::client::connect::dns:122>:resolving host="vm.aleo.org"
+2022-11-23 17:31:52.035385000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 134.122.95.106:4133; the peer is connected on port 53074
+2022-11-23 17:31:52.035421000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 134.122.95.106:4133 as the Initiator
+2022-11-23 17:31:52.035577000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '134.122.95.106:4133'
+2022-11-23 17:31:52.035672000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 167.71.219.176:4133; the peer is connected on port 53075
+2022-11-23 17:31:52.035693000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 167.71.219.176:4133 as the Initiator
+2022-11-23 17:31:52.035710000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '167.71.219.176:4133'
+2022-11-23 17:31:52.039405000 [DEBUG] <hyper::client::connect::http:537>:connecting to 198.18.0.39:443
+2022-11-23 17:31:52.040825000 [DEBUG] <hyper::client::connect::http:540>:connected to 198.18.0.39:443
+2022-11-23 17:31:52.440813000 [INFO] <snarkos_node_router::handshake:146>:Connected to '167.71.219.176:4133'
+2022-11-23 17:31:52.440906000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 167.71.219.176:4133
+2022-11-23 17:31:52.673259000 [INFO] <snarkos_node_router::handshake:146>:Connected to '134.122.95.106:4133'
+2022-11-23 17:31:52.673369000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 134.122.95.106:4133
+2022-11-23 17:31:53.022319000 [DEBUG] <hyper::proto::h1::io:342>:flushed 222 bytes
+2022-11-23 17:31:53.824514000 [DEBUG] <hyper::proto::h1::io:207>:parsed 17 headers
+2022-11-23 17:31:53.824672000 [DEBUG] <hyper::proto::h1::conn:222>:incoming body is content-length (2 bytes)
+2022-11-23 17:31:53.824700000 [DEBUG] <hyper::proto::h1::conn:298>:incoming body completed
+2022-11-23 17:31:53.824773000 [DEBUG] <hyper::client::pool:376>:pooling idle connection for ("https", vm.aleo.org)
+2022-11-23 17:31:54.533957000 [INFO] <snarkos_node_router::heartbeat:173>:Disconnecting from '134.122.95.106:4133' (exceeded maximum bootstrap)
+2022-11-23 17:31:54.534149000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 134.122.95.106:4133
+2022-11-23 17:31:54.534173000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 134.122.95.106:4133
+2022-11-23 17:32:01.032510000 [DEBUG] <snarkos_node_router::heartbeat:40>:Connected to 1 peer: [167.71.219.176:4133]
+2022-11-23 17:32:10.032917000 [DEBUG] <snarkos_node_router::heartbeat:40>:Connected to 1 peer: [167.71.219.176:4133]
+2022-11-23 17:32:10.033674000 [DEBUG] <snarkos_node_router:133>:Connecting to 65.108.79.181:4133...
+2022-11-23 17:32:10.034620000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 65.108.79.181:4133; the peer is connected on port 53102
+2022-11-23 17:32:10.034725000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 65.108.79.181:4133 as the Initiator
+2022-11-23 17:32:10.034760000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '65.108.79.181:4133'
+2022-11-23 17:32:10.963962000 [INFO] <snarkos_node_router::handshake:146>:Connected to '65.108.79.181:4133'
+2022-11-23 17:32:10.964060000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 65.108.79.181:4133
+2022-11-23 17:32:14.087416000 [INFO] <snarkos_node::prover:156>:Shutting down...
+2022-11-23 17:32:14.087614000 [DEBUG] <snarkos_node_tcp::tcp:410>:shutting down
+2022-11-23 17:32:14.087670000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 65.108.79.181:4133
+2022-11-23 17:32:14.087694000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 65.108.79.181:4133
+2022-11-23 17:32:14.087721000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 167.71.219.176:4133
+2022-11-23 17:32:14.087753000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 167.71.219.176:4133
+2022-11-23 17:32:14.087776000 [INFO] <snarkos_node::prover:169>:Node has shut down.
+2022-11-23 18:34:29.509810000 [DEBUG] <client:22>:run prover
+2022-11-23 18:34:29.519294000 [DEBUG] <snarkos_node_tcp::tcp:434>:tcp; name="0"
+2022-11-23 18:34:29.519380000 [INFO] <snarkos_node_tcp::tcp:439>:tcp; name="0"
+2022-11-23 18:34:29.519393000 [WARN] <snarkos_node_tcp::tcp:444>:tcp; name="0"
+2022-11-23 18:34:29.519403000 [ERROR] <snarkos_node_tcp::tcp:446>:tcp; name="0"
+2022-11-23 18:34:29.519766000 [DEBUG] <snarkos_node_tcp::tcp:199>:listening on 0.0.0.0:4133
+2022-11-23 18:34:29.519828000 [DEBUG] <snarkos_node_tcp::tcp:202>:the node is ready
+2022-11-23 18:34:34.973020000 [DEBUG] <snarkos_node_router::heartbeat:39>:No connected peers
+2022-11-23 18:34:34.973241000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.973443000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.973609000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.973855000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.974042000 [DEBUG] <snarkos_node_router:133>:Connecting to 159.223.204.96:4133...
+2022-11-23 18:34:34.974207000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.974341000 [WARN] <client::client:170>:Skipping an iteration of the coinbase puzzle (no connected peers)
+2022-11-23 18:34:34.974389000 [DEBUG] <snarkos_node_router:133>:Connecting to 164.92.111.59:4133...
+2022-11-23 18:34:34.974425000 [DEBUG] <reqwest::connect:429>:starting new connection: https://vm.aleo.org/
+2022-11-23 18:34:34.974918000 [DEBUG] <hyper::client::connect::dns:122>:resolving host="vm.aleo.org"
+2022-11-23 18:34:34.975050000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 159.223.204.96:4133; the peer is connected on port 58068
+2022-11-23 18:34:34.975093000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 159.223.204.96:4133 as the Initiator
+2022-11-23 18:34:34.975174000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '159.223.204.96:4133'
+2022-11-23 18:34:34.975337000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 164.92.111.59:4133; the peer is connected on port 58069
+2022-11-23 18:34:34.975364000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 164.92.111.59:4133 as the Initiator
+2022-11-23 18:34:34.975385000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '164.92.111.59:4133'
+2022-11-23 18:34:34.981238000 [DEBUG] <hyper::client::connect::http:537>:connecting to 198.18.0.39:443
+2022-11-23 18:34:34.982462000 [DEBUG] <hyper::client::connect::http:540>:connected to 198.18.0.39:443
+2022-11-23 18:34:35.613461000 [INFO] <snarkos_node_router::handshake:146>:Connected to '164.92.111.59:4133'
+2022-11-23 18:34:35.613564000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 164.92.111.59:4133
+2022-11-23 18:34:35.639240000 [INFO] <snarkos_node_router::handshake:146>:Connected to '159.223.204.96:4133'
+2022-11-23 18:34:35.639339000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 159.223.204.96:4133
+2022-11-23 18:34:36.186303000 [DEBUG] <hyper::proto::h1::io:342>:flushed 222 bytes
+2022-11-23 18:34:36.613938000 [DEBUG] <hyper::proto::h1::io:207>:parsed 17 headers
+2022-11-23 18:34:36.614019000 [DEBUG] <hyper::proto::h1::conn:222>:incoming body is content-length (2 bytes)
+2022-11-23 18:34:36.614041000 [DEBUG] <hyper::proto::h1::conn:298>:incoming body completed
+2022-11-23 18:34:36.614101000 [DEBUG] <hyper::client::pool:376>:pooling idle connection for ("https", vm.aleo.org)
+2022-11-23 18:34:37.475345000 [INFO] <snarkos_node_router::heartbeat:173>:Disconnecting from '164.92.111.59:4133' (exceeded maximum bootstrap)
+2022-11-23 18:34:37.475570000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 164.92.111.59:4133
+2022-11-23 18:34:37.475599000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 164.92.111.59:4133
+2022-11-23 18:34:43.973715000 [DEBUG] <snarkos_node_router::heartbeat:40>:Connected to 1 peer: [159.223.204.96:4133]
+2022-11-23 18:34:52.975000000 [DEBUG] <snarkos_node_router::heartbeat:40>:Connected to 1 peer: [159.223.204.96:4133]
+2022-11-23 18:34:52.977207000 [DEBUG] <snarkos_node_router:133>:Connecting to 149.102.146.18:4133...
+2022-11-23 18:34:52.978435000 [DEBUG] <snarkos_node_tcp::tcp:261>:establishing connection with 149.102.146.18:4133; the peer is connected on port 58091
+2022-11-23 18:34:52.978591000 [DEBUG] <snarkos_node_tcp::protocols::handshake:64>:shaking hands with 149.102.146.18:4133 as the Initiator
+2022-11-23 18:34:52.978658000 [DEBUG] <snarkos_node_router::handshake:64>:Received a connection request from '149.102.146.18:4133'
+2022-11-23 18:34:53.782624000 [INFO] <snarkos_node_router::handshake:146>:Connected to '149.102.146.18:4133'
+2022-11-23 18:34:53.782835000 [DEBUG] <snarkos_node_tcp::protocols::handshake:69>:successfully handshaken with 149.102.146.18:4133
+2022-11-23 18:35:00.217341000 [INFO] <client::client::router:104>:Coinbase Puzzle (Epoch 317, Block 81256, Coinbase Target 21808249, Proof Target 170377)
+2022-11-23 18:35:01.978817000 [DEBUG] <snarkos_node_router::heartbeat:41>:Connected to 2 peers: [159.223.204.96:4133, 149.102.146.18:4133]
+2022-11-23 18:35:04.135384000 [INFO] <client::client:137>:Shutting down...
+2022-11-23 18:35:04.135556000 [DEBUG] <snarkos_node_tcp::tcp:410>:shutting down
+2022-11-23 18:35:04.135606000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 159.223.204.96:4133
+2022-11-23 18:35:04.135629000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 159.223.204.96:4133
+2022-11-23 18:35:04.135653000 [DEBUG] <snarkos_node_tcp::tcp:343>:disconnecting from 149.102.146.18:4133
+2022-11-23 18:35:04.135674000 [DEBUG] <snarkos_node_tcp::tcp:357>:disconnected from 149.102.146.18:4133
+2022-11-23 18:35:04.135694000 [INFO] <client::client:150>:Node has shut down.
