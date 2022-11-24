@@ -41,6 +41,9 @@ snarkos-node-messages = { git = "https://github.com/AleoHQ/snarkOS.git", branch 
 snarkos-account = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
 snarkos-node-router = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
 snarkos-node-store = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "testnet3" }
+snarkvm-curves = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
+snarkvm-utilities = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
+snarkvm-algorithms = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
 
 
 [build-dependencies]

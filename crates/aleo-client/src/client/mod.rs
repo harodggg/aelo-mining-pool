@@ -24,6 +24,9 @@ use snarkvm::prelude::{
     Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
     ProverSolution, ViewKey,
 };
+use snarkvm_algorithms::fft::polynomial;
+use snarkvm_algorithms::fft::DensePolynomial;
+use snarkvm_curves::traits::pairing_engine::PairingEngine;
 use std::{
     net::SocketAddr,
     sync::{
@@ -206,6 +209,15 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     block.proof_target(),
                 )
             });
+
+            if let Some(epoch_dev) = latest_epoch_challenge {
+                epoch_dev.epoch_number();
+                let polynomial: DensePolynomial<<N::PairingCurve as PairingEngine>::Fr> =
+                    epoch_dev.epoch_polynomial();
+                let b = polynomial.serialize_compressed();
+                info!("{}", b);
+            }
+
             // let a = 1;
             // let state_change = latest_epoch_challenge
             //     .as_ref()
@@ -221,26 +233,30 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
 
             // If the latest block timestamp exceeds a multiple of the anchor time, then skip this iteration.
 
-            if let Some((latest_timestamp, _, _)) = latest_state {
-                // Compute the elapsed time since the latest block.
-                let elapsed = OffsetDateTime::now_utc()
-                    .unix_timestamp()
-                    .saturating_sub(latest_timestamp);
-                // If the elapsed time exceeds a multiple of the anchor time, then skip this iteration.
-                if elapsed > N::ANCHOR_TIME as i64 * 6 {
-                    warn!("Skipping an iteration of the coinbase puzzle (latest block is stale)");
-                    // Send a "PuzzleRequest" to a beacon node.
-                    self.send_puzzle_request();
-                    // self.notity();
-                    // Sleep for `N::ANCHOR_TIME` seconds.
-                    tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
-                    let mut rpc = self.client_rpc.lock().await;
-                    rpc.request_block().await;
-                    continue;
-                }
-            }
-            let mut rpc = self.client_rpc.lock().await;
-            rpc.request_block().await;
+            // if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
+            //     // Compute the elapsed time since the latest block.
+            //     let elapsed = OffsetDateTime::now_utc()
+            //         .unix_timestamp()
+            //         .saturating_sub(latest_timestamp);
+            //     // If the elapsed time exceeds a multiple of the anchor time, then skip this iteration.
+            //     if elapsed > N::ANCHOR_TIME as i64 * 6 {
+            //         warn!("Skipping an iteration of the coinbase puzzle (latest block is stale)");
+            //         // Send a "PuzzleRequest" to a beacon node.
+            //         self.send_puzzle_request();
+            //         // self.notity();
+            //         // Sleep for `N::ANCHOR_TIME` seconds.
+            //         tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
+            //         let mut rpc = self.client_rpc.lock().await;
+            //         rpc.request_block(latest_timestamp, coinbase_target, proof_target)
+            //             .await;
+            //         continue;
+            //     }
+            // }
+            // if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
+            //     let mut rpc = self.client_rpc.lock().await;
+            //     rpc.request_block(latest_timestamp, coinbase_target, proof_target)
+            //         .await;
+            // }
 
             // If the latest epoch challenge and latest state exists, then proceed to generate a prover solution.
             // if let (Some(challenge), Some((_, coinbase_target, proof_target))) =

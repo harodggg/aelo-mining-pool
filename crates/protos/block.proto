@@ -8,11 +8,13 @@ service Block {
 
 message BlockRequest {
         // block state
-        uint64 timestramp = 1;
+        int64 timestramp = 1;
         uint64 coinbase_target = 2;
         uint64 proof_target = 3;
         // block 
-        
+       // uint64 epoch_number = 4;
+        //uint64 epoch_block_hash = 5;
+
 }
 message BlockRespone{ 
     uint64 height = 1;
