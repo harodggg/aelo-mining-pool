@@ -6,10 +6,14 @@ service Block {
     rpc SubmitLatestBlock (BlockRequest) returns (BlockRespone);
 }
 
-message BlockRequest { 
-    uint64 height = 1;
+message BlockRequest {
+        // block state
+        uint64 timestramp = 1;
+        uint64 coinbase_target = 2;
+        uint64 proof_target = 3;
+        // block 
+        
 }
-
 message BlockRespone{ 
-    uint64 difficult = 1;
+    uint64 height = 1;
 }

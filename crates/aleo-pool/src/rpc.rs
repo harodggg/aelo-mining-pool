@@ -1,7 +1,5 @@
-use std::ptr::addr_of;
-
-use aleo_pool::block::block_server::{Block, BlockServer};
-use aleo_pool::block::{BlockRequest, BlockRespone};
+use super::block::block_server::{Block, BlockServer};
+use super::block::{BlockRequest, BlockRespone};
 use anyhow::Result;
 use tonic::codegen::Arc;
 use tonic::transport::Server;
@@ -18,10 +16,10 @@ impl Block for AleoBlock {
         &self,
         request: Request<BlockRequest>,
     ) -> Result<Response<BlockRespone>, Status> {
-        println!("{:?}", request);
-        let _ = &self.block;
-        self.hello();
-        let response = BlockRespone { difficult: 11 };
+        println!("{:#?}", request.get_ref());
+        // let _ = &self.block;
+        // self.hello();
+        let response = BlockRespone { height: 1 };
         Ok(Response::new(response))
     }
 }
@@ -30,7 +28,7 @@ impl AleoBlock {
     fn get_block() -> Result<String> {
         Ok(String::from("hellO"))
     }
-    fn set_block(&self) -> Result<bool> {
+    fn update_block(&self) -> Result<bool> {
         Ok(true)
     }
     fn hello(&self) {}
