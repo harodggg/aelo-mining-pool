@@ -1,5 +1,6 @@
 mod client;
 use client::run_prover;
+use client::ClientRpc;
 use simple_log::{info, log::debug, LogConfigBuilder};
 use tokio::runtime::{self, Runtime};
 
@@ -14,12 +15,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .size(1 * 100)
         .roll_count(10)
         .time_format("%Y-%m-%d %H:%M:%S.%f") //E.g:%H:%M:%S.%f
-        .level("debug")
+        .level("info")
         .output_file()
         .output_console()
         .build();
     simple_log::new(config)?;
     debug!("run prover");
+    // ClientRpc::run().await?;
     run_prover().await?;
     std::future::pending::<()>().await;
     Ok(())

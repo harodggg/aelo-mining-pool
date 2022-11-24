@@ -1,9 +1,5 @@
-mod db;
-mod rpc;
-
+use aleo_pool::rpc::run_aleo_block;
 use clap::Parser;
-use rpc::run_aleo_block;
-
 use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};
 
@@ -35,15 +31,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .size(1 * 100)
         .roll_count(10)
         .time_format("%Y-%m-%d %H:%M:%S.%f") //E.g:%H:%M:%S.%f
-        .level("debug")
+        .level("info")
         .output_file()
         .output_console()
         .build();
     simple_log::new(config)?;
-    debug!("test builder debug");
-    run_aleo_block().await;
-
     info!("Runing Stratum Service");
+    run_aleo_block().await;
     if args.start {
         println!("start");
     }
