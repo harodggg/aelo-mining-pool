@@ -24,9 +24,7 @@ use snarkvm::prelude::{
     Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
     ProverSolution, ViewKey,
 };
-use snarkvm_algorithms::fft::polynomial;
-use snarkvm_algorithms::fft::DensePolynomial;
-use snarkvm_curves::traits::pairing_engine::PairingEngine;
+use snarkvm_utilities::serialize::*;
 use std::{
     net::SocketAddr,
     sync::{
@@ -36,11 +34,20 @@ use std::{
 };
 use tokio::sync::Mutex;
 
+use snarkvm_algorithms::fft::{EvaluationDomain, Evaluations, Polynomial};
+use snarkvm_fields::{Field, PrimeField};
+use snarkvm_utilities::{cfg_iter_mut, serialize::*};
 use time::OffsetDateTime;
 use tokio::task::JoinHandle;
 use traits::NodeInterface;
 
+use std::{
+    fmt,
+    ops::{Add, AddAssign, Deref, DerefMut, Div, Mul, MulAssign, Neg, Sub, SubAssign},
+};
+
 use self::block::block_client::BlockClient;
+use snarkvm_algorithms::fft::Evaluations as EvaluationsOnDomain;
 
 /// A prover is a full node, capable of producing proofs for consensus.
 #[derive(Clone)]
@@ -212,8 +219,7 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
 
             if let Some(epoch_dev) = latest_epoch_challenge {
                 epoch_dev.epoch_number();
-                let polynomial: DensePolynomial<<N::PairingCurve as PairingEngine>::Fr> =
-                    epoch_dev.epoch_polynomial();
+                let polynomial = epoch_dev.epoch_polynomial();
                 let b = polynomial.serialize_compressed();
                 info!("{}", b);
             }

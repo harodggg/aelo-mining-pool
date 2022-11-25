@@ -44,6 +44,7 @@ snarkos-node-store = { git = "https://github.com/AleoHQ/snarkOS.git", branch = "
 snarkvm-curves = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
 snarkvm-utilities = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
 snarkvm-algorithms = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
+snarkvm-fields = { git = "https://github.com/AleoHQ/snarkVM.git", branch = "testnet3" }
 
 
 [build-dependencies]

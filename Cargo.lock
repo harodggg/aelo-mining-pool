@@ -91,6 +91,7 @@ dependencies = [
  "snarkvm",
  "snarkvm-algorithms 0.9.8 (git+https://github.com/AleoHQ/snarkVM.git?branch=testnet3)",
  "snarkvm-curves 0.9.8 (git+https://github.com/AleoHQ/snarkVM.git?branch=testnet3)",
+ "snarkvm-fields 0.9.8 (git+https://github.com/AleoHQ/snarkVM.git?branch=testnet3)",
  "snarkvm-utilities 0.9.8 (git+https://github.com/AleoHQ/snarkVM.git?branch=testnet3)",
  "stratum-pool",
  "time 0.3.17",
