@@ -3,7 +3,7 @@ use crate::client::rpc;
 use anyhow::Result;
 use std::time::Duration;
 use tokio;
-use tonic::transport::Channel;
+use tonic::{transport::Channel, Request};
 
 pub struct ClientRpc(BlockClient<Channel>);
 impl ClientRpc {
