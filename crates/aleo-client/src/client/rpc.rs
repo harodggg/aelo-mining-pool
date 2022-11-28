@@ -3,7 +3,7 @@ use crate::client::rpc;
 use anyhow::Result;
 use std::time::Duration;
 use tokio;
-use tonic::{transport::Channel, Request};
+use tonic::transport::Channel;
 
 pub struct ClientRpc(BlockClient<Channel>);
 impl ClientRpc {
@@ -16,11 +16,13 @@ impl ClientRpc {
         timestramp: i64,
         coinbase_target: u64,
         proof_target: u64,
+        epoch_challenge: Vec<u8>,
     ) {
         let request = tonic::Request::new(BlockRequest {
             timestramp: timestramp,
             coinbase_target: coinbase_target,
             proof_target: proof_target,
+            epoch_challenge: epoch_challenge,
         });
         let response = self
             .0
@@ -38,6 +40,7 @@ impl ClientRpc {
                 timestramp: 1,
                 coinbase_target: 2,
                 proof_target: 3,
+                epoch_challenge: vec![1, 2, 3],
             });
             let response = client.submit_latest_block(request).await?;
             println!("RESPONSE={:#?}", response.get_ref());

@@ -14,15 +14,17 @@ use parking_lot::RwLock;
 use rand::{rngs::OsRng, CryptoRng, Rng};
 use simple_log::*;
 use snarkos_account::Account;
-use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
+use snarkos_node_messages::{
+    Data, Message, NodeType, PuzzleResponse, UnconfirmedBlock, UnconfirmedSolution,
+};
 use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
 use snarkos_node_tcp::{
     protocols::{Disconnect, Handshake, Reading, Writing},
     P2P,
 };
 use snarkvm::prelude::{
-    Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
-    ProverSolution, ViewKey,
+    Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, FromBytes, Network,
+    PrivateKey, ProverSolution, ToBytes, ViewKey,
 };
 use snarkvm_utilities::serialize::*;
 use std::{
@@ -216,12 +218,9 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     block.proof_target(),
                 )
             });
-
-            if let Some(epoch_dev) = latest_epoch_challenge {
-                epoch_dev.epoch_number();
-                let polynomial = epoch_dev.epoch_polynomial();
-                let b = polynomial.serialize_compressed();
-                info!("{}", b);
+            if let Some(challenge) = latest_epoch_challenge {
+                let epoch_challenge = challenge.to_bytes_le();
+                info!("epoch_challenge:{:?}", epoch_challenge);
             }
 
             // let a = 1;
@@ -239,25 +238,36 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
 
             // If the latest block timestamp exceeds a multiple of the anchor time, then skip this iteration.
 
-            // if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
-            //     // Compute the elapsed time since the latest block.
-            //     let elapsed = OffsetDateTime::now_utc()
-            //         .unix_timestamp()
-            //         .saturating_sub(latest_timestamp);
-            //     // If the elapsed time exceeds a multiple of the anchor time, then skip this iteration.
-            //     if elapsed > N::ANCHOR_TIME as i64 * 6 {
-            //         warn!("Skipping an iteration of the coinbase puzzle (latest block is stale)");
-            //         // Send a "PuzzleRequest" to a beacon node.
-            //         self.send_puzzle_request();
-            //         // self.notity();
-            //         // Sleep for `N::ANCHOR_TIME` seconds.
-            //         tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
-            //         let mut rpc = self.client_rpc.lock().await;
-            //         rpc.request_block(latest_timestamp, coinbase_target, proof_target)
-            //             .await;
-            //         continue;
-            //     }
-            // }
+            if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
+                // Compute the elapsed time since the latest block.
+                let elapsed = OffsetDateTime::now_utc()
+                    .unix_timestamp()
+                    .saturating_sub(latest_timestamp);
+                // If the elapsed time exceeds a multiple of the anchor time, then skip this iteration.
+                if elapsed > N::ANCHOR_TIME as i64 * 6 {
+                    warn!("Skipping an iteration of the coinbase puzzle (latest block is stale)");
+                    // Send a "PuzzleRequest" to a beacon node.
+                    self.send_puzzle_request();
+                    // self.notity();
+                    // Sleep for `N::ANCHOR_TIME` seconds.
+                    tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
+                    let mut rpc = self.client_rpc.lock().await;
+
+                    if let Some(challenge) = latest_epoch_challenge {
+                        let epoch_vec = challenge.to_bytes_le();
+
+                        rpc.request_block(
+                            latest_timestamp,
+                            coinbase_target,
+                            proof_target,
+                            epoch_vec,
+                        )
+                        .await;
+                    }
+
+                    continue;
+                }
+            }
             // if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
             //     let mut rpc = self.client_rpc.lock().await;
             //     rpc.request_block(latest_timestamp, coinbase_target, proof_target)

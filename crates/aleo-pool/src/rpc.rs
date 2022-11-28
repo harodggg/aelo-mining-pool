@@ -19,7 +19,7 @@ impl Block for AleoBlock {
         println!("{:#?}", request.get_ref());
         // let _ = &self.block;
         // self.hello();
-        let response = BlockRespone { height: 1 };
+        let response = BlockRespone { status: 1 };
         Ok(Response::new(response))
     }
 }

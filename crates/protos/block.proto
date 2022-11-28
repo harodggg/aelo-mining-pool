@@ -14,8 +14,9 @@ message BlockRequest {
         // block 
        // uint64 epoch_number = 4;
         //uint64 epoch_block_hash = 5;
+        bytes epoch_challenge = 4;
 
 }
 message BlockRespone{ 
-    uint64 height = 1;
+    uint64 status = 1;
 }
