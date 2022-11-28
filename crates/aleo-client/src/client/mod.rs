@@ -218,6 +218,11 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     block.proof_target(),
                 )
             });
+            if let Some(challenge) = latest_epoch_challenge {
+                let epoch_challenge = challenge.to_bytes_le();
+                info!("epoch_challenge:{:?}", epoch_challenge);
+            }
+
             // let a = 1;
             // let state_change = latest_epoch_challenge
             //     .as_ref()
@@ -268,12 +273,6 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
             //     rpc.request_block(latest_timestamp, coinbase_target, proof_target)
             //         .await;
             // }
-                    rpc.request_block().await;
-                    continue;
-                }
-            }
-            let mut rpc = self.client_rpc.lock().await;
-            rpc.request_block().await;
 
             // If the latest epoch challenge and latest state exists, then proceed to generate a prover solution.
             // if let (Some(challenge), Some((_, coinbase_target, proof_target))) =
