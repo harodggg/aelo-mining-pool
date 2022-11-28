@@ -11,11 +11,18 @@ impl ClientRpc {
         rpc::ClientRpc(block_client)
     }
 
-    pub async fn request_block(&mut self) {
+    pub async fn request_block(
+        &mut self,
+        timestramp: i64,
+        coinbase_target: u64,
+        proof_target: u64,
+        epoch_challenge: Vec<u8>,
+    ) {
         let request = tonic::Request::new(BlockRequest {
-            timestramp: 1,
-            coinbase_target: 2,
-            proof_target: 3,
+            timestramp: timestramp,
+            coinbase_target: coinbase_target,
+            proof_target: proof_target,
+            epoch_challenge: epoch_challenge,
         });
         let response = self
             .0
@@ -33,6 +40,7 @@ impl ClientRpc {
                 timestramp: 1,
                 coinbase_target: 2,
                 proof_target: 3,
+                epoch_challenge: vec![1, 2, 3],
             });
             let response = client.submit_latest_block(request).await?;
             println!("RESPONSE={:#?}", response.get_ref());

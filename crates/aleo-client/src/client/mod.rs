@@ -14,16 +14,19 @@ use parking_lot::RwLock;
 use rand::{rngs::OsRng, CryptoRng, Rng};
 use simple_log::*;
 use snarkos_account::Account;
-use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
+use snarkos_node_messages::{
+    Data, Message, NodeType, PuzzleResponse, UnconfirmedBlock, UnconfirmedSolution,
+};
 use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
 use snarkos_node_tcp::{
     protocols::{Disconnect, Handshake, Reading, Writing},
     P2P,
 };
 use snarkvm::prelude::{
-    Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Network, PrivateKey,
-    ProverSolution, ViewKey,
+    Address, Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, FromBytes, Network,
+    PrivateKey, ProverSolution, ToBytes, ViewKey,
 };
+use snarkvm_utilities::serialize::*;
 use std::{
     net::SocketAddr,
     sync::{
@@ -33,11 +36,20 @@ use std::{
 };
 use tokio::sync::Mutex;
 
+use snarkvm_algorithms::fft::{EvaluationDomain, Evaluations, Polynomial};
+use snarkvm_fields::{Field, PrimeField};
+use snarkvm_utilities::{cfg_iter_mut, serialize::*};
 use time::OffsetDateTime;
 use tokio::task::JoinHandle;
 use traits::NodeInterface;
 
+use std::{
+    fmt,
+    ops::{Add, AddAssign, Deref, DerefMut, Div, Mul, MulAssign, Neg, Sub, SubAssign},
+};
+
 use self::block::block_client::BlockClient;
+use snarkvm_algorithms::fft::Evaluations as EvaluationsOnDomain;
 
 /// A prover is a full node, capable of producing proofs for consensus.
 #[derive(Clone)]
@@ -221,7 +233,7 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
 
             // If the latest block timestamp exceeds a multiple of the anchor time, then skip this iteration.
 
-            if let Some((latest_timestamp, _, _)) = latest_state {
+            if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
                 // Compute the elapsed time since the latest block.
                 let elapsed = OffsetDateTime::now_utc()
                     .unix_timestamp()
@@ -235,6 +247,27 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     // Sleep for `N::ANCHOR_TIME` seconds.
                     tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
                     let mut rpc = self.client_rpc.lock().await;
+
+                    if let Some(challenge) = latest_epoch_challenge {
+                        let epoch_vec = challenge.to_bytes_le();
+
+                        rpc.request_block(
+                            latest_timestamp,
+                            coinbase_target,
+                            proof_target,
+                            epoch_vec,
+                        )
+                        .await;
+                    }
+
+                    continue;
+                }
+            }
+            // if let Some((latest_timestamp, coinbase_target, proof_target)) = latest_state {
+            //     let mut rpc = self.client_rpc.lock().await;
+            //     rpc.request_block(latest_timestamp, coinbase_target, proof_target)
+            //         .await;
+            // }
                     rpc.request_block().await;
                     continue;
                 }
