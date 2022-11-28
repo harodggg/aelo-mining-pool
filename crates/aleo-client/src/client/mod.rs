@@ -218,10 +218,10 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     block.proof_target(),
                 )
             });
-            if let Some(challenge) = latest_epoch_challenge {
-                let epoch_challenge = challenge.to_bytes_le();
-                info!("epoch_challenge:{:?}", epoch_challenge);
-            }
+            // if let Some(challenge) = latest_epoch_challenge {
+            //     let epoch_challenge = challenge.to_bytes_le();
+            //     info!("epoch_challenge:{:?}", epoch_challenge);
+            // }
 
             // let a = 1;
             // let state_change = latest_epoch_challenge
@@ -255,14 +255,15 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
 
                     if let Some(challenge) = latest_epoch_challenge {
                         let epoch_vec = challenge.to_bytes_le();
-
-                        rpc.request_block(
-                            latest_timestamp,
-                            coinbase_target,
-                            proof_target,
-                            epoch_vec,
-                        )
-                        .await;
+                        if let Ok(epoch) = epoch_vec {
+                            rpc.request_block(
+                                latest_timestamp,
+                                coinbase_target,
+                                proof_target,
+                                epoch,
+                            )
+                            .await;
+                        }
                     }
 
                     continue;
