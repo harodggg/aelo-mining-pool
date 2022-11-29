@@ -1,5 +1,6 @@
 use super::block::block_server::{Block, BlockServer};
 use super::block::{BlockRequest, BlockRespone};
+use crate::block_observer::BlockObserver;
 use anyhow::Result;
 use simple_log::info;
 use snarkvm::prelude::{EpochChallenge, FromBytes, Network, Testnet3};
@@ -11,6 +12,7 @@ use tonic::{Request, Response, Status};
 #[derive(Debug)]
 pub struct AleoBlock {
     epoch_challenge: Arc<RwLock<EpochChallenge<Testnet3>>>,
+    observers: Arc<RwLock<BlockObserver>>,
 }
 
 impl AleoBlock {
@@ -20,6 +22,7 @@ impl AleoBlock {
                 EpochChallenge::<Testnet3>::new(0, <Testnet3 as Network>::BlockHash::default(), 3)
                     .unwrap(),
             )),
+            observers: Arc::new(RwLock::new(BlockObserver::default())),
         }
     }
 }
@@ -39,7 +42,9 @@ impl Block for AleoBlock {
         if let Ok(epoch_challenge) = epoch_challenge {
             *epoch_challenge_lock = epoch_challenge;
         }
+        
         info!("{:?}", self.epoch_challenge);
+        //todo 通知所有的观察者。
         let response = BlockRespone { status: 1 };
         Ok(Response::new(response))
     }
