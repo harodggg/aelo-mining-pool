@@ -1,6 +1,8 @@
+mod prover;
 mod router;
 mod rpc;
 mod traits;
+pub use prover::*;
 pub use rpc::*;
 pub use traits::*;
 
@@ -66,7 +68,7 @@ pub struct Prover<N: Network, C: ConsensusStorage<N>> {
     puzzle_instances: Arc<AtomicU8>,
     /// The maximum number of puzzle instances.
     max_puzzle_instances: u8,
-    client_rpc: Arc<Mutex<ClientRpc>>,
+    client_rpc: Arc<RwLock<ClientRpc>>,
     /// The spawned handles.
     handles: Arc<RwLock<Vec<JoinHandle<()>>>>,
     /// The shutdown signal.
@@ -113,7 +115,7 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
             latest_block: Default::default(),
             puzzle_instances: Default::default(),
             max_puzzle_instances: u8::try_from(max_puzzle_instances)?,
-            client_rpc: Arc::new(Mutex::new(rpc::ClientRpc::new(block_client))),
+            client_rpc: Arc::new(RwLock::new(rpc::ClientRpc::new(block_client))),
             handles: Default::default(),
             shutdown: Default::default(),
             _phantom: Default::default(),
@@ -249,18 +251,24 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
                     // self.notity();
                     // Sleep for `N::ANCHOR_TIME` seconds.
                     tokio::time::sleep(Duration::from_secs(N::ANCHOR_TIME as u64)).await;
-                    let mut rpc = self.client_rpc.lock().await;
+                    let mut rpc = self.client_rpc.read().clone();
 
                     if let Some(challenge) = latest_epoch_challenge {
                         let epoch_vec = challenge.to_bytes_le();
-                        if let Ok(epoch) = epoch_vec {
-                            rpc.request_block(
-                                latest_timestamp,
-                                coinbase_target,
-                                proof_target,
-                                epoch,
-                            )
-                            .await;
+                        info!("epoch_vec:{:?}", epoch_vec);
+                        match epoch_vec {
+                            Ok(epoch) => {
+                                rpc.request_block(
+                                    latest_timestamp,
+                                    coinbase_target,
+                                    proof_target,
+                                    epoch,
+                                )
+                                .await
+                            }
+                            Err(e) => {
+                                error!("Error:{}", e);
+                            }
                         }
                     }
 
