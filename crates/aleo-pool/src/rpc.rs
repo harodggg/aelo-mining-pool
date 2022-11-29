@@ -2,14 +2,26 @@ use super::block::block_server::{Block, BlockServer};
 use super::block::{BlockRequest, BlockRespone};
 use anyhow::Result;
 use simple_log::info;
-use snarkvm::prelude::{EpochChallenge, FromBytes, Testnet3};
+use snarkvm::prelude::{EpochChallenge, FromBytes, Network, Testnet3};
+use tokio::sync::RwLock;
 use tonic::codegen::Arc;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct AleoBlock {
-    //epoch_challenge: Arc<EpochChallenge<Testnet3>>,
+    epoch_challenge: Arc<RwLock<EpochChallenge<Testnet3>>>,
+}
+
+impl AleoBlock {
+    pub fn default() -> Self {
+        Self {
+            epoch_challenge: Arc::new(RwLock::new(
+                EpochChallenge::<Testnet3>::new(0, <Testnet3 as Network>::BlockHash::default(), 3)
+                    .unwrap(),
+            )),
+        }
+    }
 }
 
 #[tonic::async_trait]
@@ -23,7 +35,11 @@ impl Block for AleoBlock {
         // self.hello();
         let epoch_challenge =
             EpochChallenge::<Testnet3>::from_bytes_le(&request.get_ref().epoch_challenge);
-        info!("{:?}", epoch_challenge);
+        let mut epoch_challenge_lock = self.epoch_challenge.write().await;
+        if let Ok(epoch_challenge) = epoch_challenge {
+            *epoch_challenge_lock = epoch_challenge;
+        }
+        info!("{:?}", self.epoch_challenge);
         let response = BlockRespone { status: 1 };
         Ok(Response::new(response))
     }
