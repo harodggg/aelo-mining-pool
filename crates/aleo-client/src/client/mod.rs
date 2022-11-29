@@ -1,8 +1,6 @@
-mod prover;
 mod router;
 mod rpc;
 mod traits;
-pub use prover::*;
 pub use rpc::*;
 pub use traits::*;
 
