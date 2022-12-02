@@ -67,6 +67,7 @@ dependencies = [
 name = "aleo-client"
 version = "0.1.0"
 dependencies = [
+ "aleo-utils",
  "anyhow",
  "async-stream",
  "async-trait",
@@ -105,6 +106,7 @@ dependencies = [
 name = "aleo-pool"
 version = "0.1.0"
 dependencies = [
+ "aleo-utils",
  "anyhow",
  "async-stream",
  "clap 4.0.26",
@@ -197,6 +199,10 @@ name = "aleo-utils"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "num_cpus",
+ "rayon",
+ "simple-log",
+ "tokio",
 ]
 
 [[package]]

@@ -24,23 +24,22 @@ const BOOTSTRAP: [&str; 6] = [
     "161.35.24.55:4133",
 ];
 
-pub async fn run_node_prover() -> Result<()> {
+pub async fn run_node_prover(dev: Option<u16>) -> Result<()> {
     Node::new_prover(
         SocketAddr::from_str(NODE_IP)?,
         PrivateKey::<CurrentNetwork>::from_str(PRIVATE_KEY)?,
         &[],
-        None,
+        dev,
     )
     .await?;
-
     Ok(())
 }
-pub async fn run_prover() -> Result<()> {
+pub async fn run_prover(dev: Option<u16>) -> Result<()> {
     Prover::<CurrentNetwork, ConsensusDB<CurrentNetwork>>::new(
         SocketAddr::from_str(NODE_IP)?,
         Account::<CurrentNetwork>::from_str(PRIVATE_KEY)?,
         &[],
-        None,
+        dev,
     )
     .await?;
     Ok(())
