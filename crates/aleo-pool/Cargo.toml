@@ -9,6 +9,7 @@ path = "./src/main.rs"
 
 [dependencies]
 clap = { version = "4.0.9", features = ["derive"] }
+aleo-utils = { path = "../aleo-utils" }
 anyhow = "*"
 simple-log = "1.6.0"
 redis = "0.22.1"
