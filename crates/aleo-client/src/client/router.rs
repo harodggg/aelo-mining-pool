@@ -68,7 +68,7 @@ impl<N: Network, C: ConsensusStorage<N>> Reading for Prover<N, C> {
                 Message::Disconnect(DisconnectReason::ProtocolViolation.into()),
             );
             // Disconnect from this peer.
-            self.router().disconnect(peer_ip).await;
+            self.router().disconnect(peer_ip);
         }
         Ok(())
     }
@@ -106,17 +106,13 @@ impl<N: Network, C: ConsensusStorage<N>> Inbound<N> for Prover<N, C> {
             block.coinbase_target(),
             block.proof_target()
         );
-        //        info!("block:{}", block);
 
         // Save the latest epoch challenge in the node.
         self.latest_epoch_challenge
             .write()
             .replace(message.epoch_challenge);
+        // Save the latest block in the node.
         self.latest_block.write().replace(block);
-        //  info!("block:{:?}", self.latest_block);
-        // debug!("epoch_challenge:{:?}", self.latest_epoch_challenge);
-
-        //info!("epoch_challenge:{:?}", message.epoch_challenge.clone());
 
         trace!("Received 'PuzzleResponse' from '{peer_ip}' (Epoch {epoch_number}, Block {block_height})");
         true

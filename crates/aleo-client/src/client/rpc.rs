@@ -5,6 +5,7 @@ use std::time::Duration;
 use tokio;
 use tonic::{transport::Channel, Request};
 
+#[derive(Clone)]
 pub struct ClientRpc(BlockClient<Channel>);
 impl ClientRpc {
     pub fn new(block_client: BlockClient<Channel>) -> Self {
