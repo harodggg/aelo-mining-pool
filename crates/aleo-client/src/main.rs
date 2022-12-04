@@ -14,7 +14,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     log().unwrap();
     debug!("run prover");
     //ClientRpc::run().await?;
-    run_prover(Some(2)).await?;
+    run_prover(Some(3)).await?;
     std::future::pending::<()>().await;
     Ok(())
 }
