@@ -8,7 +8,7 @@ name = "worker"
 path = "./src/main.rs"
 
 [dependencies]
-aleo-worker = { path = "./aleo-prover" }
+aleo-prover = { path = "./aleo-prover" }
 clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
 simple-log = "1.6.0"
