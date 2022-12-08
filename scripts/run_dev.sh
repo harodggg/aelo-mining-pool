@@ -8,11 +8,11 @@ function start_up_devnet {
         echo "Start Up Update"
         nohup git pull >$SNARK_PATH/update.log 2>&1 &
         echo "Start Up Beacon"
-        nohup cargo run --release -- start --nodisplay --dev 0 --beacon "" >$SNARK_PATH/beacon.log 2>&1 &
+        nohup cargo run --release -- start --nodisplay --dev 0 --beacon "" >$WORK_PATH/beacon.log 2>&1 &
         echo "Start Up Prover"
-        nohup cargo run --release -- start --nodisplay --dev 1 --prover "" >$SNARK_PATH/prover.log 2>&1 &
+        nohup cargo run --release -- start --nodisplay --dev 1 --prover "" >$WORK_PATH/prover.log 2>&1 &
         echo "Start Up Validator"
-        nohup cargo run --release -- start --nodisplay --dev 2 --validator "" >$SNARK_PATH/validator.log 2>&1 &
+        nohup cargo run --release -- start --nodisplay --dev 2 --validator "" >$WORK_PATH/validator.log 2>&1 &
         cd $(pwd)
     fi
 }
@@ -20,7 +20,7 @@ function start_up_devnet {
 function start_up_pools {
     if [ $1 == 2 ]; then
         echo "Compile Aelo Pools"
-        nohup cargo build --release >/dev/null 2>&1 &
+        nohup cargo build --release >cargo.log 2>&1 &
         echo "Start Up Pool"
         nohup $WORK_PATH/target/release/pool >pool.log 2>&1 &
         echo "Start Up Client"
@@ -44,6 +44,8 @@ function kill_pools {
         killall pool
         echo "Kill Client"
         killall client
+        echo "Rm All Log File"
+        rm *.log
     fi
 }
 
