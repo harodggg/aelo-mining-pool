@@ -1,14 +1,15 @@
 mod router;
-mod rpc;
+pub mod rpc;
 mod traits;
+
 use async_trait::async_trait;
-use rpc::ClientRpc;
+pub use rpc::ClientRpc;
 use simple_log::log::{error, info, trace};
 use snarkos_account::Account;
 pub use traits::NodeInterface;
 
-use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
-use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
+use snarkos_node_messages::{Data, Message, NodeType, UnconfirmedSolution};
+use snarkos_node_router::{Heartbeat, Outbound, Router, Routing};
 use snarkvm::prelude::ToBytes;
 use snarkvm::prelude::{
     Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Header, Network, ProverSolution,
@@ -18,7 +19,7 @@ use anyhow::Result;
 use colored::Colorize;
 use core::{marker::PhantomData, time::Duration};
 use parking_lot::RwLock;
-use rand::{rngs::OsRng, CryptoRng, Rng};
+use rand::{CryptoRng, Rng};
 use std::{
     net::SocketAddr,
     sync::{

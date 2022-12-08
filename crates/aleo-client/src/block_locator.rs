@@ -29,19 +29,29 @@ impl<N: Network> IntoIterator for BlockLocators<N> {
     //  Check by sorting 300-1000 items and comparing the performance.
     //  (https://docs.rs/indexmap/latest/indexmap/map/struct.IndexMap.html#method.from_par_iter)
     fn into_iter(self) -> Self::IntoIter {
-        BTreeMap::from_iter(self.checkpoints.into_iter().chain(self.recents.into_iter())).into_iter()
+        BTreeMap::from_iter(self.checkpoints.into_iter().chain(self.recents.into_iter()))
+            .into_iter()
     }
 }
 
 impl<N: Network> BlockLocators<N> {
     /// Initializes a new instance of the block locators.
-    pub fn new(recents: IndexMap<u32, N::BlockHash>, checkpoints: IndexMap<u32, N::BlockHash>) -> Self {
-        Self { recents, checkpoints }
+    pub fn new(
+        recents: IndexMap<u32, N::BlockHash>,
+        checkpoints: IndexMap<u32, N::BlockHash>,
+    ) -> Self {
+        Self {
+            recents,
+            checkpoints,
+        }
     }
 
     /// Initializes a new genesis instance of the block locators.
     pub fn new_genesis(genesis_hash: N::BlockHash) -> Self {
-        Self { recents: indexmap![0 => genesis_hash], checkpoints: indexmap![0 => genesis_hash] }
+        Self {
+            recents: indexmap![0 => genesis_hash],
+            checkpoints: indexmap![0 => genesis_hash],
+        }
     }
 
     /// Returns the latest locator height.
@@ -51,7 +61,10 @@ impl<N: Network> BlockLocators<N> {
 
     /// Returns the block hash for the given block height, if it exists.
     pub fn get_hash(&self, height: u32) -> Option<N::BlockHash> {
-        self.recents.get(&height).copied().or_else(|| self.checkpoints.get(&height).copied())
+        self.recents
+            .get(&height)
+            .copied()
+            .or_else(|| self.checkpoints.get(&height).copied())
     }
 
     /// Returns `true` if the block locators are well-formed.
@@ -132,7 +145,8 @@ impl<N: Network> BlockLocators<N> {
 
         // If the `last_recent_height` is below NUM_RECENTS, ensure the genesis hash matches in both maps.
         if last_recent_height < NUM_RECENTS as u32
-            && recents.get(&0).copied().unwrap_or_default() != checkpoints.get(&0).copied().unwrap_or_default()
+            && recents.get(&0).copied().unwrap_or_default()
+                != checkpoints.get(&0).copied().unwrap_or_default()
         {
             bail!("Recent genesis hash and checkpoint genesis hash mismatch at height {last_recent_height}")
         }
@@ -183,7 +197,8 @@ impl<N: Network> BlockLocators<N> {
         }
 
         // If the last height is below NUM_RECENTS, ensure the number of recent blocks matches the last height.
-        if last_height < NUM_RECENTS as u32 && recents.len().saturating_sub(1) as u32 != last_height {
+        if last_height < NUM_RECENTS as u32 && recents.len().saturating_sub(1) as u32 != last_height
+        {
             bail!("As the last height is below {NUM_RECENTS}, the number of recent blocks must match the height")
         }
         // Otherwise, ensure the number of recent blocks matches NUM_RECENTS.
@@ -208,7 +223,10 @@ impl<N: Network> BlockLocators<N> {
     /// 4. The block checkpoints are in the correct order.
     fn check_block_checkpoints(checkpoints: &IndexMap<u32, N::BlockHash>) -> Result<u32> {
         // Ensure the block checkpoints are not empty.
-        ensure!(!checkpoints.is_empty(), "There must be at least 1 block checkpoint");
+        ensure!(
+            !checkpoints.is_empty(),
+            "There must be at least 1 block checkpoint"
+        );
 
         // Ensure the given checkpoints increment in height, and at the correct interval.
         let mut last_height = 0;
@@ -264,9 +282,18 @@ pub mod test_helpers {
     }
 
     /// Simulates a block locator at the given height, with a fork within NUM_RECENTS of the given height.
-    pub fn sample_block_locators_with_fork(height: u32, fork_height: u32) -> BlockLocators<CurrentNetwork> {
-        assert!(fork_height <= height, "Fork height must be less than or equal to the given height");
-        assert!(height - fork_height < NUM_RECENTS as u32, "Fork must be within NUM_RECENTS of the given height");
+    pub fn sample_block_locators_with_fork(
+        height: u32,
+        fork_height: u32,
+    ) -> BlockLocators<CurrentNetwork> {
+        assert!(
+            fork_height <= height,
+            "Fork height must be less than or equal to the given height"
+        );
+        assert!(
+            height - fork_height < NUM_RECENTS as u32,
+            "Fork must be within NUM_RECENTS of the given height"
+        );
 
         // Create the recent locators.
         let mut recents = IndexMap::new();
@@ -305,7 +332,10 @@ pub mod test_helpers {
             };
 
             let block_locators = sample_block_locators(expected_height);
-            assert_eq!(block_locators.checkpoints.len(), expected_num_checkpoints as usize);
+            assert_eq!(
+                block_locators.checkpoints.len(),
+                expected_num_checkpoints as usize
+            );
             assert_eq!(block_locators.recents.len(), expected_num_recents as usize);
             assert_eq!(block_locators.latest_locator_height(), expected_height);
             assert!(block_locators.is_valid());
@@ -323,13 +353,20 @@ mod tests {
     type CurrentNetwork = snarkvm::prelude::Testnet3;
 
     /// Simulates block locators for a ledger within the given `heights` range.
-    fn check_is_valid(checkpoints: IndexMap<u32, <CurrentNetwork as Network>::BlockHash>, heights: Range<u32>) {
+    fn check_is_valid(
+        checkpoints: IndexMap<u32, <CurrentNetwork as Network>::BlockHash>,
+        heights: Range<u32>,
+    ) {
         for height in heights {
             let mut recents = IndexMap::new();
             for i in 0..NUM_RECENTS as u32 {
-                recents.insert(height + i, (Field::<CurrentNetwork>::from_u32(height + i)).into());
+                recents.insert(
+                    height + i,
+                    (Field::<CurrentNetwork>::from_u32(height + i)).into(),
+                );
 
-                let block_locators = BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
+                let block_locators =
+                    BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
                 if height == 0 && recents.len() < NUM_RECENTS {
                     // For the first NUM_RECENTS blocks, ensure NUM_RECENTS - 1 or less is valid.
                     block_locators.ensure_is_valid().unwrap();
@@ -346,7 +383,8 @@ mod tests {
                 height + NUM_RECENTS as u32,
                 (Field::<CurrentNetwork>::from_u32(height + NUM_RECENTS as u32)).into(),
             );
-            let block_locators = BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
+            let block_locators =
+                BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
             block_locators.ensure_is_valid().unwrap_err();
         }
     }
@@ -361,22 +399,36 @@ mod tests {
         for height in heights {
             let mut recents = IndexMap::new();
             for i in 0..NUM_RECENTS as u32 {
-                recents.insert(height + i, (Field::<CurrentNetwork>::from_u32(height + i)).into());
+                recents.insert(
+                    height + i,
+                    (Field::<CurrentNetwork>::from_u32(height + i)).into(),
+                );
 
-                let block_locators = BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
-                block_locators.ensure_is_consistent_with(&block_locators).unwrap();
+                let block_locators =
+                    BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
+                block_locators
+                    .ensure_is_consistent_with(&block_locators)
+                    .unwrap();
 
                 // Only test consistency when the block locators are valid to begin with.
                 let is_first_num_recents_blocks = height == 0 && recents.len() < NUM_RECENTS;
                 let is_num_recents_blocks = recents.len() == NUM_RECENTS;
                 if is_first_num_recents_blocks || is_num_recents_blocks {
                     // Ensure the block locators are consistent with the genesis block locators.
-                    genesis_locators.ensure_is_consistent_with(&block_locators).unwrap();
-                    block_locators.ensure_is_consistent_with(&genesis_locators).unwrap();
+                    genesis_locators
+                        .ensure_is_consistent_with(&block_locators)
+                        .unwrap();
+                    block_locators
+                        .ensure_is_consistent_with(&genesis_locators)
+                        .unwrap();
 
                     // Ensure the block locators are consistent with the block locators with two recent blocks.
-                    second_locators.ensure_is_consistent_with(&block_locators).unwrap();
-                    block_locators.ensure_is_consistent_with(&second_locators).unwrap();
+                    second_locators
+                        .ensure_is_consistent_with(&block_locators)
+                        .unwrap();
+                    block_locators
+                        .ensure_is_consistent_with(&second_locators)
+                        .unwrap();
                 }
             }
         }
@@ -384,7 +436,8 @@ mod tests {
 
     #[test]
     fn test_ensure_is_valid() {
-        let zero: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(0)).into();
+        let zero: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(0)).into();
         let checkpoint_1: <CurrentNetwork as Network>::BlockHash =
             (Field::<CurrentNetwork>::from_u32(CHECKPOINT_INTERVAL)).into();
 
@@ -398,12 +451,19 @@ mod tests {
         let checkpoints = IndexMap::from([(0, zero)]);
         let mut recents = IndexMap::new();
         for i in 0..NUM_RECENTS {
-            recents.insert(i as u32, (Field::<CurrentNetwork>::from_u32(i as u32)).into());
-            let block_locators = BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
+            recents.insert(
+                i as u32,
+                (Field::<CurrentNetwork>::from_u32(i as u32)).into(),
+            );
+            let block_locators =
+                BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints.clone());
             block_locators.ensure_is_valid().unwrap();
         }
         // Ensure NUM_RECENTS + 1 is not valid.
-        recents.insert(NUM_RECENTS as u32, (Field::<CurrentNetwork>::from_u32(NUM_RECENTS as u32)).into());
+        recents.insert(
+            NUM_RECENTS as u32,
+            (Field::<CurrentNetwork>::from_u32(NUM_RECENTS as u32)).into(),
+        );
         let block_locators = BlockLocators::<CurrentNetwork>::new(recents.clone(), checkpoints);
         block_locators.ensure_is_valid().unwrap_err();
 
@@ -415,56 +475,80 @@ mod tests {
         let checkpoints = IndexMap::from([(0, zero), (CHECKPOINT_INTERVAL, checkpoint_1)]);
         check_is_valid(
             checkpoints,
-            (CHECKPOINT_INTERVAL - NUM_RECENTS as u32)..(CHECKPOINT_INTERVAL * 2 - NUM_RECENTS as u32),
+            (CHECKPOINT_INTERVAL - NUM_RECENTS as u32)
+                ..(CHECKPOINT_INTERVAL * 2 - NUM_RECENTS as u32),
         );
     }
 
     #[test]
     fn test_ensure_is_valid_fails() {
-        let zero: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(0)).into();
-        let one: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(1)).into();
+        let zero: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(0)).into();
+        let one: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(1)).into();
 
         // Ensure an empty block locators is not valid.
-        let block_locators = BlockLocators::<CurrentNetwork>::new(Default::default(), Default::default());
+        let block_locators =
+            BlockLocators::<CurrentNetwork>::new(Default::default(), Default::default());
         block_locators.ensure_is_valid().unwrap_err();
 
         // Ensure internally-mismatching genesis block locators is valid.
-        let block_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero)]), IndexMap::from([(0, one)]));
+        let block_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero)]),
+            IndexMap::from([(0, one)]),
+        );
         block_locators.ensure_is_valid().unwrap_err();
 
         // Ensure internally-mismatching genesis block locators is valid.
-        let block_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, one)]), IndexMap::from([(0, zero)]));
+        let block_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, one)]),
+            IndexMap::from([(0, zero)]),
+        );
         block_locators.ensure_is_valid().unwrap_err();
 
         // Ensure internally-mismatching block locators with two recent blocks is valid.
-        let block_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, one), (1, zero)]), IndexMap::from([(0, zero)]));
+        let block_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, one), (1, zero)]),
+            IndexMap::from([(0, zero)]),
+        );
         block_locators.ensure_is_valid().unwrap_err();
 
         // Ensure duplicate recent block hashes are not valid.
-        let block_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero), (1, zero)]), IndexMap::from([(0, zero)]));
+        let block_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero), (1, zero)]),
+            IndexMap::from([(0, zero)]),
+        );
         block_locators.ensure_is_valid().unwrap_err();
     }
 
     #[test]
     fn test_ensure_is_consistent_with() {
-        let zero: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(0)).into();
-        let one: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(1)).into();
+        let zero: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(0)).into();
+        let one: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(1)).into();
 
-        let genesis_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero)]), IndexMap::from([(0, zero)]));
-        let second_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero), (1, one)]), IndexMap::from([(0, zero)]));
+        let genesis_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero)]),
+            IndexMap::from([(0, zero)]),
+        );
+        let second_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero), (1, one)]),
+            IndexMap::from([(0, zero)]),
+        );
 
         // Ensure genesis block locators is consistent with genesis block locators.
-        genesis_locators.ensure_is_consistent_with(&genesis_locators).unwrap();
+        genesis_locators
+            .ensure_is_consistent_with(&genesis_locators)
+            .unwrap();
 
         // Ensure genesis block locators is consistent with block locators with two recent blocks.
-        genesis_locators.ensure_is_consistent_with(&second_locators).unwrap();
-        second_locators.ensure_is_consistent_with(&genesis_locators).unwrap();
+        genesis_locators
+            .ensure_is_consistent_with(&second_locators)
+            .unwrap();
+        second_locators
+            .ensure_is_consistent_with(&genesis_locators)
+            .unwrap();
 
         // Ensure the block locators before the second checkpoint are valid.
         let checkpoints = IndexMap::from([(0, Default::default())]);
@@ -476,10 +560,14 @@ mod tests {
         );
 
         // Ensure the block locators after the second checkpoint are valid.
-        let checkpoints = IndexMap::from([(0, Default::default()), (CHECKPOINT_INTERVAL, Default::default())]);
+        let checkpoints = IndexMap::from([
+            (0, Default::default()),
+            (CHECKPOINT_INTERVAL, Default::default()),
+        ]);
         check_is_consistent(
             checkpoints,
-            (CHECKPOINT_INTERVAL - NUM_RECENTS as u32)..(CHECKPOINT_INTERVAL * 2 - NUM_RECENTS as u32),
+            (CHECKPOINT_INTERVAL - NUM_RECENTS as u32)
+                ..(CHECKPOINT_INTERVAL * 2 - NUM_RECENTS as u32),
             genesis_locators,
             second_locators,
         );
@@ -487,29 +575,55 @@ mod tests {
 
     #[test]
     fn test_ensure_is_consistent_with_fails() {
-        let zero: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(0)).into();
-        let one: <CurrentNetwork as Network>::BlockHash = (Field::<CurrentNetwork>::from_u32(1)).into();
+        let zero: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(0)).into();
+        let one: <CurrentNetwork as Network>::BlockHash =
+            (Field::<CurrentNetwork>::from_u32(1)).into();
 
-        let genesis_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero)]), IndexMap::from([(0, zero)]));
-        let second_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, zero), (1, one)]), IndexMap::from([(0, zero)]));
+        let genesis_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero)]),
+            IndexMap::from([(0, zero)]),
+        );
+        let second_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, zero), (1, one)]),
+            IndexMap::from([(0, zero)]),
+        );
 
-        let wrong_genesis_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, one)]), IndexMap::from([(0, one)]));
-        let wrong_second_locators =
-            BlockLocators::<CurrentNetwork>::new(IndexMap::from([(0, one), (1, zero)]), IndexMap::from([(0, one)]));
+        let wrong_genesis_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, one)]),
+            IndexMap::from([(0, one)]),
+        );
+        let wrong_second_locators = BlockLocators::<CurrentNetwork>::new(
+            IndexMap::from([(0, one), (1, zero)]),
+            IndexMap::from([(0, one)]),
+        );
 
-        genesis_locators.ensure_is_consistent_with(&wrong_genesis_locators).unwrap_err();
-        wrong_genesis_locators.ensure_is_consistent_with(&genesis_locators).unwrap_err();
+        genesis_locators
+            .ensure_is_consistent_with(&wrong_genesis_locators)
+            .unwrap_err();
+        wrong_genesis_locators
+            .ensure_is_consistent_with(&genesis_locators)
+            .unwrap_err();
 
-        genesis_locators.ensure_is_consistent_with(&wrong_second_locators).unwrap_err();
-        wrong_second_locators.ensure_is_consistent_with(&genesis_locators).unwrap_err();
+        genesis_locators
+            .ensure_is_consistent_with(&wrong_second_locators)
+            .unwrap_err();
+        wrong_second_locators
+            .ensure_is_consistent_with(&genesis_locators)
+            .unwrap_err();
 
-        second_locators.ensure_is_consistent_with(&wrong_genesis_locators).unwrap_err();
-        wrong_genesis_locators.ensure_is_consistent_with(&second_locators).unwrap_err();
+        second_locators
+            .ensure_is_consistent_with(&wrong_genesis_locators)
+            .unwrap_err();
+        wrong_genesis_locators
+            .ensure_is_consistent_with(&second_locators)
+            .unwrap_err();
 
-        second_locators.ensure_is_consistent_with(&wrong_second_locators).unwrap_err();
-        wrong_second_locators.ensure_is_consistent_with(&second_locators).unwrap_err();
+        second_locators
+            .ensure_is_consistent_with(&wrong_second_locators)
+            .unwrap_err();
+        wrong_second_locators
+            .ensure_is_consistent_with(&second_locators)
+            .unwrap_err();
     }
 }

@@ -2,6 +2,8 @@ mod block_locator;
 pub mod client;
 mod helpers;
 pub use block_locator::*;
+pub mod prover;
+pub mod version;
 
 #[macro_use]
 extern crate async_trait;
