@@ -1,5 +1,6 @@
 pub mod block_observer;
 pub mod rpc;
+mod version;
 pub mod block {
     tonic::include_proto!("block");
 }

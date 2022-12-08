@@ -209,6 +209,7 @@ dependencies = [
 name = "aleo-worker"
 version = "0.1.0"
 dependencies = [
+ "aleo-prover",
  "anyhow",
  "clap 4.0.26",
  "simple-log",
