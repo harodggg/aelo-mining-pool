@@ -2,8 +2,8 @@ mod client;
 mod version;
 use aleo_utils::log::log;
 use aleo_utils::print_welcome;
-use client::run_prover;
-use client::ClientRpc;
+//use client::run_prover;
+//use client::ClientRpc;
 use simple_log::{info, log::debug, LogConfigBuilder};
 use tokio::runtime::{self, Runtime};
 use version::LOGO;
@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     print_welcome(LOGO);
     info!("Start Run Client");
     //ClientRpc::run().await?;
-    run_prover(Some(5)).await?;
+    //run_prover(Some(5)).await?;
 
     std::future::pending::<()>().await;
     Ok(())

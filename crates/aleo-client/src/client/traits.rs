@@ -1,3 +1,4 @@
+use async_trait::async_trait;
 use simple_log::error;
 use snarkos_node_messages::NodeType;
 use snarkos_node_router::Routing;

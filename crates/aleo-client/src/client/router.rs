@@ -1,16 +1,20 @@
-use super::*;
+use crate::client::traits::NodeInterface;
+use crate::client::Prover;
 use async_trait::async_trait;
 use futures_util::sink::SinkExt;
-use simple_log::{info, trace, warn};
+use simple_log::log::{debug, info, trace, warn};
 use snarkos_node_messages::{
-    BlockRequest, DisconnectReason, Message, MessageCodec, Ping, Pong, UnconfirmedTransaction,
+    BlockRequest, DisconnectReason, Message, MessageCodec, Ping, Pong, PuzzleResponse,
+    UnconfirmedSolution, UnconfirmedTransaction,
 };
-use snarkos_node_tcp::{Connection, ConnectionSide, Tcp};
-use snarkvm::{
-    prelude::{Network, Transaction},
-    synthesizer::ConsensusStorage,
-};
-use std::{io, net::SocketAddr};
+use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
+use snarkos_node_tcp::protocols::{Disconnect, Handshake, Reading, Writing};
+use snarkos_node_tcp::{Connection, ConnectionSide, Tcp, P2P};
+use snarkvm::prelude::{Block, Network, Transaction};
+use snarkvm::synthesizer::{ConsensusStorage, Header, ProverSolution};
+use std::io;
+use std::net::SocketAddr;
+use tokio::time::Duration;
 
 impl<N: Network, C: ConsensusStorage<N>> P2P for Prover<N, C> {
     /// Returns a reference to the TCP instance.

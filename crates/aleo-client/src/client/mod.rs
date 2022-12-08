@@ -1,19 +1,18 @@
 mod router;
+mod rpc;
 mod traits;
-use simple_log::log::{debug, info, trace};
+use async_trait::async_trait;
+use rpc::ClientRpc;
+use simple_log::log::{error, info, trace};
 use snarkos_account::Account;
 pub use traits::NodeInterface;
 
 use snarkos_node_messages::{Data, Message, NodeType, PuzzleResponse, UnconfirmedSolution};
 use snarkos_node_router::{Heartbeat, Inbound, Outbound, Router, Routing};
-use snarkos_node_tcp::{
-    protocols::{Disconnect, Handshake, Reading, Writing},
-    P2P,
-};
+use snarkvm::prelude::ToBytes;
 use snarkvm::prelude::{
-    Block,CoinbasePuzzle, ConsensusStorage, EpochChallenge, Header, Network, ProverSolution,
+    Block, CoinbasePuzzle, ConsensusStorage, EpochChallenge, Header, Network, ProverSolution,
 };
-
 
 use anyhow::Result;
 use colored::Colorize;
@@ -27,7 +26,12 @@ use std::{
         Arc,
     },
 };
-use tokio::task::JoinHandle;
+use tokio::{sync::Mutex, task::JoinHandle};
+pub mod block {
+    tonic::include_proto!("block");
+}
+
+use crate::client::block::block_client::BlockClient;
 
 /// A prover is a full node, capable of producing proofs for consensus.
 #[derive(Clone)]
@@ -46,6 +50,8 @@ pub struct Prover<N: Network, C: ConsensusStorage<N>> {
     puzzle_instances: Arc<AtomicU8>,
     /// The maximum number of puzzle instances.
     max_puzzle_instances: u8,
+    /// The rpc of client
+    client_rpc: Arc<Mutex<ClientRpc>>,
     /// The spawned handles.
     handles: Arc<RwLock<Vec<JoinHandle<()>>>>,
     /// The shutdown signal.
@@ -73,10 +79,14 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
             dev.is_some(),
         )
         .await?;
-        // Load the coinbase puzzle.
+        //Load the coinbase puzzle.
         let coinbase_puzzle = CoinbasePuzzle::<N>::load()?;
         // Compute the maximum number of puzzle instances.
         let max_puzzle_instances = num_cpus::get().saturating_sub(2).clamp(1, 6);
+
+        let block_client = BlockClient::connect("http://[::1]:50051")
+            .await
+            .expect("client rpc error");
         // Initialize the node.
         let node = Self {
             router,
@@ -86,6 +96,7 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
             latest_block_header: Default::default(),
             puzzle_instances: Default::default(),
             max_puzzle_instances: u8::try_from(max_puzzle_instances)?,
+            client_rpc: Arc::new(Mutex::new(rpc::ClientRpc::new(block_client))),
             handles: Default::default(),
             shutdown: Default::default(),
             _phantom: Default::default(),
@@ -153,36 +164,50 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
             // Read the latest epoch challenge.
             let latest_epoch_challenge = self.latest_epoch_challenge.read().clone();
             // Read the latest state.
-            let latest_state = self
-                .latest_block_header
-                .read()
-                .as_ref()
-                .map(|header| (header.coinbase_target(), header.proof_target()));
-
-            // If the latest epoch challenge and latest state exists, then proceed to generate a prover solution.
-            if let (Some(challenge), Some((coinbase_target, proof_target))) =
+            let latest_state = self.latest_block_header.read().as_ref().map(|header| {
+                (
+                    header.coinbase_target(),
+                    header.proof_target(),
+                    header.timestamp(),
+                )
+            });
+            if let (Some(challenge), Some((coinbase_target, proof_target, timestamp))) =
                 (latest_epoch_challenge, latest_state)
             {
                 // Execute the coinbase puzzle.
                 let prover = self.clone();
-                let result = tokio::task::spawn_blocking(move || {
-                    prover.coinbase_puzzle_iteration(
-                        challenge,
-                        coinbase_target,
-                        proof_target,
-                        &mut OsRng,
-                    )
-                })
-                .await;
+                // let result = tokio::task::spawn_blocking(move || {
+                //     prover.coinbase_puzzle_iteration(
+                //         challenge,
+                //         coinbase_target,
+                //         proof_target,
+                //         &mut OsRng,
+                //     )
+                // })
+                // .await;
 
-                // If the prover found a solution, then broadcast it.
-                if let Ok(Some((solution_target, solution))) = result {
-                    info!(
-                        "Found a Solution '{}' (Proof Target {solution_target})",
-                        solution.commitment()
-                    );
-                    // Broadcast the prover solution.
-                    self.broadcast_prover_solution(solution);
+                // // If the prover found a solution, then broadcast it.
+                // if let Ok(Some((solution_target, solution))) = result {
+                //     info!(
+                //         "Found a Solution '{}' (Proof Target {solution_target})",
+                //         solution.commitment()
+                //     );
+                //     // Broadcast the prover solution.
+                //     self.broadcast_prover_solution(solution);
+                // }
+                let rpc = self.client_rpc.lock();
+
+                let epoch_vec = challenge.to_bytes_le();
+                info!("epoch_vec:{:?}", epoch_vec);
+                match epoch_vec {
+                    Ok(epoch) => {
+                        rpc.await
+                            .request_block(timestamp, coinbase_target, proof_target, epoch)
+                            .await
+                    }
+                    Err(e) => {
+                        error!("Error:{}", e);
+                    }
                 }
             } else {
                 // Otherwise, sleep for a brief period of time, to await for puzzle state.
