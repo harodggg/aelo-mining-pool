@@ -1,4 +1,5 @@
 pub mod block_observer;
+mod db;
 pub mod rpc;
 pub mod version;
 pub mod block {
@@ -16,3 +17,9 @@ struct PoolService {
     // todo!,5, 接受solution。
     // todo!,5, 处理日志问题。将snakos的日志库，给禁止掉。不输出不必要的信息。
 }
+
+impl PoolService {
+    pub fn start_up(&self) {}
+}
+
+trait Rpcable {}
