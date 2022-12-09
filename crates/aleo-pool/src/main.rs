@@ -1,7 +1,9 @@
+use aleo_pool::version::LOGO;
 use aleo_pool::rpc::run_aleo_block;
 use aleo_utils::log::log;
+use aleo_utils::print_welcome;
 use clap::Parser;
-use simple_log::{debug, info, warn};
+use simple_log::info;
 
 #[derive(clap::ValueEnum, Clone)]
 enum State {
@@ -27,6 +29,7 @@ struct Args {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     log().unwrap();
+    print_welcome(LOGO);
     info!("Runing Stratum Service");
     run_aleo_block().await;
     if args.start {
