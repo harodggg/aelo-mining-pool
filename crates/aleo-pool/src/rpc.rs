@@ -33,17 +33,24 @@ impl Block for AleoBlock {
         &self,
         request: Request<BlockRequest>,
     ) -> Result<Response<BlockRespone>, Status> {
-        info!("{:#?}", request.get_ref());
+        info!("get_ref:{:#?}", request.get_ref());
         // let _ = &self.block;
         // self.hello();
         let epoch_challenge =
             EpochChallenge::<Testnet3>::from_bytes_le(&request.get_ref().epoch_challenge);
-        let mut epoch_challenge_lock = self.epoch_challenge.write().await;
-        if let Ok(epoch_challenge) = epoch_challenge {
-            *epoch_challenge_lock = epoch_challenge;
+        //info!("epoch_challenge raw result: {:?}", epoch_challenge;
+        {
+            let mut epoch_challenge_lock = self.epoch_challenge.write().await;
+            if let Ok(epoch_challenge) = epoch_challenge {
+                //   info!("epoch_challenge raw: {:?}", epoch_challenge);
+                *epoch_challenge_lock = epoch_challenge;
+            }
         }
-        
-        info!("{:?}", self.epoch_challenge);
+
+        info!(
+            "self epoch_challenge {:?}",
+            self.epoch_challenge.read().await
+        );
         //todo 通知所有的观察者。
         let response = BlockRespone { status: 1 };
         Ok(Response::new(response))

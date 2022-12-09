@@ -14,7 +14,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     log().unwrap();
     print_welcome(LOGO);
     info!("Start Run Client");
-    ClientRpc::run().await?;
+    //ClientRpc::run().await?;
     run_prover::<Testnet3>(4).await?;
 
     std::future::pending::<()>().await;
