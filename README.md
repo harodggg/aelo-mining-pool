@@ -8,8 +8,10 @@
 a mining pool for aleo.The strutum protocol, the mining pool, and the full-node client are independent of each other and separated from each other.
 
 ## Features
-- pool 
-- worker
+
+- pool   (Manage a large number of workers and distribute epoch_challenge to workers)
+- worker (Manage prover, the only task is to run a large number of prover)
+- client (Connect the prover node to provide the latest block data and epoch_challenge to the worker)
 
 
 ## Getting Started
@@ -32,6 +34,17 @@ sudo apt install -y protobuf-compiler libprotobuf-dev
 ```bash
 brew install protobuf
 ```
+
+## Aleo Mining Pool Started
+
+### Aleo Client Usage
+
+### Aleo Pool Usage
+
+### Aleo Worker Usage
+
+
+
 ## Getting Help
 Via github issue is currently the only way to communicate.
 
