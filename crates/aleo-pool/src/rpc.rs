@@ -4,6 +4,7 @@ use crate::block_observer::BlockObserver;
 use anyhow::Result;
 use simple_log::info;
 use snarkvm::prelude::{EpochChallenge, FromBytes, Network, Testnet3};
+use stratum_pool::{stratum_pool::stratum_pool_server::StratumPoolServer, AleoStratumPool};
 use tokio::sync::RwLock;
 use tonic::codegen::Arc;
 use tonic::transport::Server;
@@ -33,7 +34,9 @@ impl Block for AleoBlock {
         &self,
         request: Request<BlockRequest>,
     ) -> Result<Response<BlockRespone>, Status> {
-        info!("get_ref:{:#?}", request.get_ref());
+
+        info!("Get BlockRequest from Aleo Client :{:?}", request.get_ref());
+
         // let _ = &self.block;
         // self.hello();
         let epoch_challenge =
@@ -47,10 +50,12 @@ impl Block for AleoBlock {
             }
         }
 
-        info!(
-            "self epoch_challenge {:?}",
-            self.epoch_challenge.read().await
-        );
+
+        // info!(
+        //     "self epoch_challenge {:?}",
+        //     self.epoch_challenge.read().await
+        // );
+
         //todo 通知所有的观察者。
         let response = BlockRespone { status: 1 };
         Ok(Response::new(response))
@@ -67,12 +72,15 @@ impl AleoBlock {
     fn hello(&self) {}
 }
 
-pub async fn run_aleo_block() {
+pub async fn run_rpc() {
     let block = AleoBlock::default();
+    let stratum_pool = AleoStratumPool::default();
+
     let addr = "[::1]:50051".parse().unwrap();
     info!("Starting Stratum Service");
     Server::builder()
         .add_service(BlockServer::new(block))
+        .add_service(StratumPoolServer::new(stratum_pool))
         .serve(addr)
         .await
         .unwrap();
