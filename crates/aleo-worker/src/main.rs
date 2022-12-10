@@ -1,7 +1,6 @@
 use aleo_utils::{log::log, print_welcome};
 use aleo_worker::version::LOGO;
 use clap::Parser;
-use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};
 use stratum_worker::run_stratum_service;
 use tokio;
@@ -24,8 +23,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     log()?;
     print_welcome(LOGO);
     info!("Starting Mining Working");
-
-    run_stratum_service().await?;
+    //run_stratum_service().await?;
+    let handler = tokio::spawn(async { run_stratum_service().await });
+    info!("Starting Found Solution");
+    std::future::pending::<()>().await;
     if args.start {
         println!("start");
     }
