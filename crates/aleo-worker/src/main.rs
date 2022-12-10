@@ -1,6 +1,10 @@
+use aleo_utils::{log::log, print_welcome};
+use aleo_worker::version::LOGO;
 use clap::Parser;
 use simple_log::LogConfigBuilder;
 use simple_log::{debug, info, warn};
+use stratum_worker::run_stratum_service;
+use tokio;
 /// Aelo Mining pool service program
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -14,23 +18,16 @@ struct Args {
     stop: bool,
 }
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
-    let config = LogConfigBuilder::builder()
-        .path("./log/builder_log.log")
-        .size(1 * 100)
-        .roll_count(10)
-        .time_format("%Y-%m-%d %H:%M:%S.%f") //E.g:%H:%M:%S.%f
-        .level("debug")
-        .output_file()
-        .output_console()
-        .build();
-    simple_log::new(config)?;
-    debug!("test builder debug");
+    log()?;
+    print_welcome(LOGO);
+    info!("Starting Mining Working");
 
+    run_stratum_service().await?;
     if args.start {
         println!("start");
     }
     Ok(())
 }
-

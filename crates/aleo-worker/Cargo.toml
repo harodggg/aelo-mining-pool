@@ -12,4 +12,11 @@ clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
 simple-log = "1.6.0"
 snarkvm = { workspace = true }
-stratum-worker = { path = "./stratum-worker" }
+stratum-worker = { path = "../stratum-worker" }
+tokio = { version = "1.0", features = [
+    "rt-multi-thread",
+    "macros",
+    "sync",
+    "time",
+] }
+aleo-utils = { path = "../aleo-utils" }

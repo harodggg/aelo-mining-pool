@@ -1,4 +1,3 @@
-
 use aleo_pool::rpc::run_rpc;
 use aleo_pool::version::LOGO;
 
@@ -32,7 +31,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     log().unwrap();
     print_welcome(LOGO);
-    info!("Runing Stratum Service");
+    info!("Runing Mining Pool");
     run_rpc().await;
     if args.start {
         println!("start");
