@@ -26,8 +26,9 @@ struct DB {
 }
 
 impl DB {
-    pub async fn connect_db(&mut self) {
-        let client = redis::Client::open(REDIS_CON_STRING).expect("redis connect error");
+    pub async fn connect_db(&mut self, redis_con: Option<&str>) {
+        let client =
+            redis::Client::open(redis_con.unwrap_or(REDIS_CON_STRING)).expect("redis connect error");
         let manager = RedisConnectionManager::new(client);
         self.redis_pool = Pool::builder()
             .get_timeout(Some(Duration::from_secs(CACHE_POOL_TIMEOUT_SECONDS)))
