@@ -40,8 +40,6 @@ impl DB {
 
     pub async fn store_worker(&mut self, worker_name: &str, work_content: &str) -> Result<bool> {
         let mut con = self.redis_pool.get().await?;
-        
-
         Ok(true)
     }
     pub async fn delete_worker(&mut self, worker_name: &str) -> Result<bool> {

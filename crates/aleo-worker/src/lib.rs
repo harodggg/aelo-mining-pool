@@ -1,5 +1,6 @@
 mod prover;
 mod trace;
+pub mod version;
 
 // use stratum::AleoStratum;
 
@@ -9,7 +10,6 @@ struct PoolClient<'a> {
     //todo! change AleoStratum to AleoStratumWorker
     // stratum_client: AleoStratum,
     version: &'a str,
-    
 }
 impl PoolClient<'_> {
     pub fn start_up() {
