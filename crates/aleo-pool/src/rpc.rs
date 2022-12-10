@@ -34,10 +34,7 @@ impl Block for AleoBlock {
         &self,
         request: Request<BlockRequest>,
     ) -> Result<Response<BlockRespone>, Status> {
-        info!(
-            "Get BlockRequest from Aleo Client :{:#?}",
-            request.get_ref()
-        );
+        info!("Get BlockRequest from Aleo Client :{:?}", request.get_ref());
         // let _ = &self.block;
         // self.hello();
         let epoch_challenge =
