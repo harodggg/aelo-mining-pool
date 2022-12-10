@@ -7,6 +7,8 @@ members = [
     "crates/stratum-worker",
     "crates/aleo-utils",
     "crates/aleo-client",
+    "crates/aleo-prover-gpu",
+    "crates/aleo-prover-cpu",
 ]
 
 [workspace.package]
