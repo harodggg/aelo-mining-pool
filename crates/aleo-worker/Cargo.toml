@@ -8,8 +8,8 @@ name = "worker"
 path = "./src/main.rs"
 
 [dependencies]
-aleo-prover = { path = "../aleo-prover" }
 clap = { version = "4.0.9", features = ["derive"] }
 anyhow = "*"
 simple-log = "1.6.0"
 snarkvm = { workspace = true }
+stratum-worker = { path = "./stratum-worker" }
