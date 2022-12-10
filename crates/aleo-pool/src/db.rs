@@ -22,13 +22,13 @@ const REDIS_CON_STRING: &str = "redis://127.0.0.1:6379";
 
 struct DB {
     // The redis connect pool
-    redis_pool: Pool<RedisConnectionManager>,
+    redis_pool: MobcPool,
 }
 
 impl DB {
     pub async fn connect_db(&mut self, redis_con: Option<&str>) {
-        let client =
-            redis::Client::open(redis_con.unwrap_or(REDIS_CON_STRING)).expect("redis connect error");
+        let client = redis::Client::open(redis_con.unwrap_or(REDIS_CON_STRING))
+            .expect("redis connect error");
         let manager = RedisConnectionManager::new(client);
         self.redis_pool = Pool::builder()
             .get_timeout(Some(Duration::from_secs(CACHE_POOL_TIMEOUT_SECONDS)))
@@ -38,16 +38,22 @@ impl DB {
             .build(manager);
     }
 
-    pub fn store_worker(&mut self, worker_name: &str, work_content: &str) -> Result<bool> {
+    pub async fn store_worker(&mut self, worker_name: &str, work_content: &str) -> Result<bool> {
+        let mut con = self.redis_pool.get().await?;
+        
+
         Ok(true)
     }
-    pub fn delete_worker(&mut self, worker_name: &str) -> Result<bool> {
+    pub async fn delete_worker(&mut self, worker_name: &str) -> Result<bool> {
+        let mut con = self.redis_pool.get().await?;
         Ok(true)
     }
-    pub fn get_worker(&mut self, worker_name: &str) -> Result<bool> {
+    pub async fn get_worker(&mut self, worker_name: &str) -> Result<bool> {
+        let mut con = self.redis_pool.get().await?;
         Ok(true)
     }
-    pub fn save_data(&mut self, filename: &str) -> Result<bool> {
+    pub async fn save_data(&mut self, filename: &str) -> Result<bool> {
+        let mut con = self.redis_pool.get().await?;
         Ok(true)
     }
 }

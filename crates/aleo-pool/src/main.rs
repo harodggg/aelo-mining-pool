@@ -1,5 +1,5 @@
+use aleo_pool::rpc::run_rpc;
 use aleo_pool::version::LOGO;
-use aleo_pool::rpc::run_aleo_block;
 use aleo_utils::log::log;
 use aleo_utils::print_welcome;
 use clap::Parser;
@@ -31,7 +31,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     log().unwrap();
     print_welcome(LOGO);
     info!("Runing Stratum Service");
-    run_aleo_block().await;
+    run_rpc().await;
     if args.start {
         println!("start");
     }
