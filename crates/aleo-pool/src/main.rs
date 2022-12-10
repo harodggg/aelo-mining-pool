@@ -1,5 +1,7 @@
+
 use aleo_pool::rpc::run_rpc;
 use aleo_pool::version::LOGO;
+
 use aleo_utils::log::log;
 use aleo_utils::print_welcome;
 use clap::Parser;
