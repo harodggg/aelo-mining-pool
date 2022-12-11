@@ -25,9 +25,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     print_welcome(LOGO);
     info!("Starting Mining Working");
     //run_stratum_service().await?;
-    let handler = tokio::spawn(async { run_stratum_service().await });
+    let _handler = tokio::spawn(async { run_stratum_service().await });
     info!("Starting Found Solution");
-    rpc_client_run().await?;
+    let _handler2= tokio::spawn( async { rpc_client_run().await.unwrap()});
     std::future::pending::<()>().await;
     if args.start {
         println!("start");
