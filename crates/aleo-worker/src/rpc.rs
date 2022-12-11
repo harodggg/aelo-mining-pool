@@ -2,9 +2,10 @@ use anyhow::Result;
 use stratum_pool::stratum_pool::{stratum_pool_client::StratumPoolClient, SubscribeRequest};
 use tokio::time::Duration;
 use tonic::Request;
+
 // auth login
 // worker -> rpc service -> prover -> worker -> status
-pub async fn run() -> Result<()> {
+pub async fn rpc_client_run() -> Result<()> {
     loop {
         let mut client = StratumPoolClient::connect("http://[::1]:50050").await?;
         let request = tonic::Request::new(SubscribeRequest { id: 1 });

@@ -1,4 +1,5 @@
 use aleo_utils::{log::log, print_welcome};
+use aleo_worker::rpc::rpc_client_run;
 use aleo_worker::version::LOGO;
 use clap::Parser;
 use simple_log::{debug, info, warn};
@@ -26,6 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     //run_stratum_service().await?;
     let handler = tokio::spawn(async { run_stratum_service().await });
     info!("Starting Found Solution");
+    rpc_client_run().await?;
     std::future::pending::<()>().await;
     if args.start {
         println!("start");
