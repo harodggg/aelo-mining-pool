@@ -11,6 +11,6 @@ pub fn computing_performance(//需要被测试的块-需要的测试的结构。
 ) -> Result<u64> {
     let start_time: u64;
     let end_time: u64;
-    //
+    // why not?
     Ok(33)
 }
