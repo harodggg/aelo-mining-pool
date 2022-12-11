@@ -133,6 +133,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "aleo-prover-cpu"
+version = "0.1.0"
+
+[[package]]
+name = "aleo-prover-gpu"
+version = "0.1.0"
+
+[[package]]
 name = "aleo-std"
 version = "0.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -215,8 +223,10 @@ dependencies = [
  "clap 4.0.29",
  "simple-log",
  "snarkvm",
+ "stratum-pool",
  "stratum-worker",
  "tokio",
+ "tonic",
 ]
 
 [[package]]

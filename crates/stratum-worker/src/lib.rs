@@ -32,15 +32,14 @@ impl StratumWorker for AleoStratumWorker {
     }
 }
 
-pub async fn run_stratum_service() -> Result<()> {
-    let addr = "[::1]:50051".parse()?;
+pub async fn run_stratum_service() {
+    let addr = "[::1]:50050".parse().unwrap();
     println!("Starting Stratum Service");
 
     let stratum = AleoStratumWorker::default();
     Server::builder()
         .add_service(StratumWorkerServer::new(stratum))
         .serve(addr)
-        .await?;
-
-    Ok(())
+        .await
+        .unwrap();
 }
