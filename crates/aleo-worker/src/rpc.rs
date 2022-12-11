@@ -15,9 +15,7 @@ pub async fn rpc_client_run() -> Result<()> {
     }
 }
 
-// reicved block
-
 // submit block
-pub async fn submit() -> Result<bool> {
+pub async fn submit_block() -> Result<bool> {
     Ok(true)
 }
