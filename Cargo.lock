@@ -223,8 +223,10 @@ dependencies = [
  "clap 4.0.29",
  "simple-log",
  "snarkvm",
+ "stratum-pool",
  "stratum-worker",
  "tokio",
+ "tonic",
 ]
 
 [[package]]

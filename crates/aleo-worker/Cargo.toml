@@ -13,6 +13,7 @@ anyhow = "*"
 simple-log = "1.6.0"
 snarkvm = { workspace = true }
 stratum-worker = { path = "../stratum-worker" }
+stratum-pool = { path = "../stratum-pool" }
 tokio = { version = "1.0", features = [
     "rt-multi-thread",
     "macros",
@@ -20,3 +21,4 @@ tokio = { version = "1.0", features = [
     "time",
 ] }
 aleo-utils = { path = "../aleo-utils" }
+tonic = "0.8.3"

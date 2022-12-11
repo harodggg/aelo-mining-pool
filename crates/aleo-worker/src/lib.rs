@@ -1,6 +1,7 @@
 mod prover;
 mod trace;
 pub mod version;
+mod rpc;
 
 // use stratum::AleoStratum;
 
