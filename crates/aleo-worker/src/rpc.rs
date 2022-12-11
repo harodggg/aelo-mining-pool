@@ -1,7 +1,7 @@
 use anyhow::Result;
 use stratum_pool::stratum_pool::{stratum_pool_client::StratumPoolClient, SubscribeRequest};
 use tokio::time::Duration;
-use tonic::Request;
+use tonic;
 
 // auth login
 // worker -> rpc service -> prover -> worker -> status
@@ -18,3 +18,6 @@ pub async fn rpc_client_run() -> Result<()> {
 // reicved block
 
 // submit block
+pub async fn submit() -> Result<bool> {
+    Ok(true)
+}
