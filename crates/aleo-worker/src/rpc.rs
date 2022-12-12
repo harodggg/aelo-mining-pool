@@ -50,6 +50,7 @@ pub async fn worker_subscribe(
         worker_rpc_server: worker_rpc_server,
     });
     let response = client.mining_subscribe(request).await?;
+    
     println!("RESPONSE={:#?}", response.get_ref());
     Ok(())
 }
