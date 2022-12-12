@@ -9,6 +9,7 @@ members = [
     "crates/aleo-client",
     "crates/aleo-prover-gpu",
     "crates/aleo-prover-cpu",
+    "crates/aleo-api"
 ]
 
 [workspace.package]

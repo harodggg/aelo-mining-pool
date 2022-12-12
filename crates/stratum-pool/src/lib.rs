@@ -1,6 +1,7 @@
 pub mod stratum_pool {
     tonic::include_proto!("stratum_pool");
 }
+
 use crate::stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
 use crate::stratum_pool::{AuthorizeRequest, AuthorizeRespone};
 use crate::stratum_pool::{DifficultRequest, DifficultRespone};
@@ -8,6 +9,10 @@ use crate::stratum_pool::{NotifyRequest, NotifyRespone};
 use crate::stratum_pool::{ShareRequest, ShareRespone};
 use crate::stratum_pool::{SubscribeRequest, SubscribeRespone};
 use anyhow::Result;
+use rand::{self, Rng};
+use simple_log::info;
+use std::net::SocketAddr;
+use std::str::FromStr;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
@@ -30,7 +35,25 @@ impl StratumPool for AleoStratumPool {
         request: Request<SubscribeRequest>,
     ) -> Result<Response<SubscribeRespone>, Status> {
         println!("{:?}", request);
-        let respone = SubscribeRespone { id: 1 };
+        // parse socket addr
+        let worker_rpc_server = request.get_ref();
+        info!(
+            "worker_rpc_server: {:?}",
+            SocketAddr::from_str(&worker_rpc_server.worker_rpc_server)
+        );
+
+        //todo Geting respone date by trait，struct,or DB connect.
+        //but now,we give simulated data，in the future,we will fix this.
+        let mut rng = rand::thread_rng();
+        let seq = rng.gen::<u128>();
+        info!("Generate a serial number:{}", seq);
+
+        let respone = SubscribeRespone {
+            pool_name: "aleo_pool".to_string(),
+            stratum_version: "AleoStratum/0.0.1".to_string(),
+            subscription_number: seq.to_string(),
+        };
+
         Ok(Response::new(respone))
     }
 

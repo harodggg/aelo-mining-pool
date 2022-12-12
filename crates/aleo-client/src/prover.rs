@@ -12,11 +12,11 @@ use snarkvm::{
 
 use std::net::SocketAddr;
 
-const PRIVATE_KEY: &str = "APrivateKey1zkp7rs3Ls2qGjUKiTeEgP5DrLpowzXKgZ59uk4aGqWaNvev";
-const VIEW_KEY: &str = "AViewKey1eq6impGbR8JoGvmU45gSWR1KBMH1uVoLmLp9hK65LqG4";
-const ADDRESS: &str = "aleo1n3dx8azjks2vlnluyelxvzys5cd3tn3jqz4m82ln9g6uy4dsd5fq4qf5a9";
-const NODE_IP: &str = "0.0.0.0:4133";
-const BOOTSTRAP: [&str; 6] = [
+const _PRIVATE_KEY: &str = "APrivateKey1zkp7rs3Ls2qGjUKiTeEgP5DrLpowzXKgZ59uk4aGqWaNvev";
+const _VIEW_KEY: &str = "AViewKey1eq6impGbR8JoGvmU45gSWR1KBMH1uVoLmLp9hK65LqG4";
+const _ADDRESS: &str = "aleo1n3dx8azjks2vlnluyelxvzys5cd3tn3jqz4m82ln9g6uy4dsd5fq4qf5a9";
+const _NODE_IP: &str = "0.0.0.0:4133";
+const _BOOTSTRAP: [&str; 6] = [
     "164.92.111.59:4133",
     "159.223.204.96:4133",
     "167.71.219.176:4133",
@@ -68,13 +68,3 @@ pub async fn run_prover<N: Network>(dev: u16) -> Result<()> {
     .await?;
     Ok(())
 }
-
-fn get_last_nosuiffict_prove() {}
-
-fn submit_prove() {}
-
-fn share_worker() {}
-
-fn get_difficult() {}
-
-fn verity_prove() {}

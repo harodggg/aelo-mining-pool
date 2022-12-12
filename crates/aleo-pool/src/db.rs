@@ -4,10 +4,9 @@ use snarkvm::prelude::Address;
 use std::net::SocketAddr;
 use std::time::Duration;
 
-// redis
+// redis pool
 use mobc::Pool;
-use mobc_redis::redis::RedisError;
-use mobc_redis::redis::{self, FromRedisValue};
+use mobc_redis::redis;
 use mobc_redis::RedisConnectionManager;
 use snarkvm::prelude::Network;
 

@@ -10,6 +10,8 @@ use tonic::codegen::Arc;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
+
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct AleoBlock {
     epoch_challenge: Arc<RwLock<EpochChallenge<Testnet3>>>,
@@ -34,7 +36,6 @@ impl Block for AleoBlock {
         &self,
         request: Request<BlockRequest>,
     ) -> Result<Response<BlockRespone>, Status> {
-
         info!("Get BlockRequest from Aleo Client :{:?}", request.get_ref());
 
         // let _ = &self.block;
@@ -50,7 +51,6 @@ impl Block for AleoBlock {
             }
         }
 
-
         // info!(
         //     "self epoch_challenge {:?}",
         //     self.epoch_challenge.read().await
@@ -62,6 +62,7 @@ impl Block for AleoBlock {
     }
 }
 
+#[allow(dead_code)]
 impl AleoBlock {
     fn get_block() -> Result<String> {
         Ok(String::from("hellO"))
