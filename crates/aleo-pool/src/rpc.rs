@@ -10,6 +10,7 @@ use tonic::codegen::Arc;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
+
 #[allow(dead_code)]
 #[derive(Debug)]
 pub struct AleoBlock {
