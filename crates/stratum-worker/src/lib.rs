@@ -27,6 +27,9 @@ impl StratumWorker for AleoStratumWorker {
         request: Request<NotifyRequest>,
     ) -> Result<Response<NotifyRespone>, Status> {
         println!("{:?}", request);
+        //接受到挖矿通知，开始挖矿,建立任务队列。当接受新的通知时，终止旧的的任务。
+        //有大量的逻辑处理逻辑。到此为止，所有的核心功能，基本开发完毕。
+        //当挖出新的区块时，启动提交命令。
         let respone = NotifyRespone { id: 1 };
         Ok(Response::new(respone))
     }

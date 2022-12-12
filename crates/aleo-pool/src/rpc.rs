@@ -56,6 +56,10 @@ impl Block for AleoBlock {
         //     self.epoch_challenge.read().await
         // );
         //todo 通知所有的观察者。观察者，通知所有的worker。worker 从数据库获取数据。
+        //todo 建立新的平行线程，通过aleo worker 的rpc 通知。
+        {
+
+            }
         let response = BlockRespone { status: 1 };
 
         Ok(Response::new(response))
