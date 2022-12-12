@@ -49,7 +49,7 @@ impl StratumPool for AleoStratumPool {
 
         let respone = SubscribeRespone {
             pool_name: "aleo_pool".to_string(),
-            stratum_version: "0.0.1".to_string(),
+            stratum_version: "AleoStratum/0.0.1".to_string(),
             subscription_number: hasher.finish().to_string(),
         };
 
