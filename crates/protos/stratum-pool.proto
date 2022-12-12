@@ -22,11 +22,12 @@ message SubscribeRespone {
 }
 
 message AuthorizeRequest {
-    uint32 id = 1;             
-
+    string username = 1;
+    string password = 2;
 }
+
 message AuthorizeRespone {
-    uint32 id = 1;
+    bool authorize_status = 1;
 }
 
 message DifficultRequest {
