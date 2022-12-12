@@ -1,6 +1,9 @@
 pub mod stratum_pool {
     tonic::include_proto!("stratum_pool");
 }
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
+
 use crate::stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
 use crate::stratum_pool::{AuthorizeRequest, AuthorizeRespone};
 use crate::stratum_pool::{DifficultRequest, DifficultRespone};
@@ -8,11 +11,19 @@ use crate::stratum_pool::{NotifyRequest, NotifyRespone};
 use crate::stratum_pool::{ShareRequest, ShareRespone};
 use crate::stratum_pool::{SubscribeRequest, SubscribeRespone};
 use anyhow::Result;
+use async_trait::async_trait;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
-
 #[derive(Debug, Default)]
 pub struct AleoStratumPool {}
+
+impl AleoStratumPool {}
+
+#[async_trait]
+trait WorkerAble {}
+
+#[async_trait]
+impl WorkerAble for AleoStratumPool {}
 
 #[tonic::async_trait]
 impl StratumPool for AleoStratumPool {
@@ -30,7 +41,18 @@ impl StratumPool for AleoStratumPool {
         request: Request<SubscribeRequest>,
     ) -> Result<Response<SubscribeRespone>, Status> {
         println!("{:?}", request);
-        let respone = SubscribeRespone { id: 1 };
+        //todo Geting respone date by trait，struct,or DB connect.
+        //but now,we give simulated data，in the future,we will fix this.
+
+        let mut hasher = DefaultHasher::new();
+        hasher.write(b"sub success");
+
+        let respone = SubscribeRespone {
+            pool_name: "aleo_pool".to_string(),
+            stratum_version: "0.0.1".to_string(),
+            subscription_number: hasher.finish().to_string(),
+        };
+
         Ok(Response::new(respone))
     }
 

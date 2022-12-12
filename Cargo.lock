@@ -64,6 +64,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "aleo-api"
+version = "0.1.0"
+
+[[package]]
 name = "aleo-client"
 version = "0.1.0"
 dependencies = [
@@ -3777,6 +3781,7 @@ name = "stratum-pool"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "async-trait",
  "futures-core",
  "futures-util",
  "prost",
