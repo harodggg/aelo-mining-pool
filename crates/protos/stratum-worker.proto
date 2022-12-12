@@ -4,6 +4,7 @@ package stratum_worker;
 
 service StratumWorker{
     rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
+    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
 }
 
 
@@ -26,3 +27,12 @@ message NotifyRequest {
 message NotifyRespone {
     uint32 status = 1;
 }
+message DifficultRequest {
+    uint32 id = 1;
+    uint64 difficult = 2;
+}
+
+message DifficultRespone {
+    uint32 id = 1;
+}
+

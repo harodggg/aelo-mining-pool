@@ -225,6 +225,7 @@ dependencies = [
  "aleo-utils",
  "anyhow",
  "clap 4.0.29",
+ "lazy_static",
  "simple-log",
  "snarkvm",
  "stratum-pool",
