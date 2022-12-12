@@ -5,8 +5,6 @@ package stratum_pool ;
 service StratumPool{
     rpc MiningSubscribe (SubscribeRequest) returns (SubscribeRespone);
     rpc MiningAuthorize (AuthorizeRequest) returns (AuthorizeRespone);
-    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
-    rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
     rpc MiningShare (ShareRequest) returns (ShareRespone);
 }
 
@@ -15,6 +13,7 @@ message SubscribeRequest {
     string stratum_version = 2;
     string worker_rpc_server = 3;
 }
+
 message SubscribeRespone {
     string pool_name = 1;
     string stratum_version = 2;
@@ -22,26 +21,12 @@ message SubscribeRespone {
 }
 
 message AuthorizeRequest {
-    uint32 id = 1;             
-
+    string username = 1;
+    string password = 2;
 }
+
 message AuthorizeRespone {
-    uint32 id = 1;
-}
-
-message DifficultRequest {
-    uint32 id = 1;
-    uint64 difficult = 2;
-}
-message DifficultRespone {
-    uint32 id = 1;
-}
-
-message NotifyRequest {
-    uint32 id = 1;
-}
-message NotifyRespone {
-    uint32 id = 1;
+    bool authorize_status = 1;
 }
 
 message ShareRequest {

@@ -10,7 +10,7 @@ use tonic::codegen::Arc;
 use tonic::transport::Server;
 use tonic::{Request, Response, Status};
 
-
+// Use a separate green thread.Operate independently
 #[allow(dead_code)]
 #[derive(Debug)]
 pub struct AleoBlock {
@@ -55,9 +55,13 @@ impl Block for AleoBlock {
         //     "self epoch_challenge {:?}",
         //     self.epoch_challenge.read().await
         // );
+        //todo 通知所有的观察者。观察者，通知所有的worker。worker 从数据库获取数据。
+        //todo 建立新的平行线程，通过aleo worker 的rpc 通知。
+        {
 
-        //todo 通知所有的观察者。
+            }
         let response = BlockRespone { status: 1 };
+
         Ok(Response::new(response))
     }
 }

@@ -2,8 +2,13 @@ mod prover;
 pub mod rpc;
 mod trace;
 pub mod version;
+use lazy_static::lazy_static;
 
 // use stratum::AleoStratum;
+// Create a global mutable work queue.
+lazy_static! {
+    pub static ref WORK_QUEUE: Mutex<vec<&str>> = Mutex::new(vec!["work1", "worker2"]);
+}
 
 #[derive(Default)]
 struct PoolClient<'a> {

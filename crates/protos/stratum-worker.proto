@@ -3,21 +3,36 @@ syntax = "proto3";
 package stratum_worker;
 
 service StratumWorker{
-    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
     rpc MiningNotify (NotifyRequest) returns (NotifyRespone);
+    rpc MiningSetDifficult (DifficultRequest) returns (DifficultRespone);
 }
 
+
+
+message NotifyRequest {
+    uint64 job_id =1;
+    bool  clean_jobs = 2;
+
+    //block state
+    int64  timestramp = 3;
+    uint64 coinbase_target = 4;
+    uint64 proof_target = 5;
+
+    //uint64 epoch_number = 4;
+    //uint64 epoch_block_hash = 5;
+    bytes epoch_challenge = 6;
+
+
+}
+message NotifyRespone {
+    uint32 status = 1;
+}
 message DifficultRequest {
     uint32 id = 1;
     uint64 difficult = 2;
 }
+
 message DifficultRespone {
     uint32 id = 1;
 }
 
-message NotifyRequest {
-    uint32 id = 1;
-}
-message NotifyRespone {
-    uint32 id = 1;
-}

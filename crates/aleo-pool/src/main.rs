@@ -5,6 +5,7 @@ use aleo_utils::log::log;
 use aleo_utils::print_welcome;
 use clap::Parser;
 use simple_log::info;
+use tokio::spawn;
 
 #[derive(clap::ValueEnum, Clone)]
 enum State {
@@ -32,9 +33,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     log().unwrap();
     print_welcome(LOGO);
     info!("Runing Mining Pool");
-    run_rpc().await;
+    spawn(async {
+        run_rpc().await;
+    });
     if args.start {
         println!("start");
     }
+    std::future::pending::<()>().await;
     Ok(())
 }
