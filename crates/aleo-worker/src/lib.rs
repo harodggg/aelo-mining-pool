@@ -4,17 +4,14 @@ mod trace;
 pub mod version;
 use lazy_static::lazy_static;
 
-std::str;
+use std::str;
 use std::sync::Mutex;
-
 
 // use stratum::AleoStratum;
 // Create a global mutable work queue.
 lazy_static! {
-
     pub static ref WORK_QUEUE: Mutex<Vec<String>> =
         Mutex::new(vec!["work1".to_owned(), "worker2".to_owned()]);
-
 }
 
 #[derive(Default)]
