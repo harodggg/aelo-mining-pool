@@ -4,8 +4,6 @@ pub mod stratum_pool {
 
 use crate::stratum_pool::stratum_pool_server::{StratumPool, StratumPoolServer};
 use crate::stratum_pool::{AuthorizeRequest, AuthorizeRespone};
-use crate::stratum_pool::{DifficultRequest, DifficultRespone};
-use crate::stratum_pool::{NotifyRequest, NotifyRespone};
 use crate::stratum_pool::{ShareRequest, ShareRespone};
 use crate::stratum_pool::{SubscribeRequest, SubscribeRespone};
 use anyhow::Result;
@@ -26,7 +24,9 @@ impl StratumPool for AleoStratumPool {
         request: Request<AuthorizeRequest>,
     ) -> Result<Response<AuthorizeRespone>, Status> {
         println!("{:?}", request);
-        let respone = AuthorizeRespone { id: 1 };
+        let respone = AuthorizeRespone {
+            authorize_status: true,
+        };
         Ok(Response::new(respone))
     }
 
@@ -54,24 +54,6 @@ impl StratumPool for AleoStratumPool {
             subscription_number: seq.to_string(),
         };
 
-        Ok(Response::new(respone))
-    }
-
-    async fn mining_set_difficult(
-        &self,
-        request: Request<DifficultRequest>,
-    ) -> Result<Response<DifficultRespone>, Status> {
-        println!("{:?}", request);
-        let respone = DifficultRespone { id: 1 };
-        Ok(Response::new(respone))
-    }
-
-    async fn mining_notify(
-        &self,
-        request: Request<NotifyRequest>,
-    ) -> Result<Response<NotifyRespone>, Status> {
-        println!("{:?}", request);
-        let respone = NotifyRespone { id: 1 };
         Ok(Response::new(respone))
     }
 

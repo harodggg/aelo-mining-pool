@@ -12,7 +12,10 @@ const POOL_CONNECT: &str = "http://[::1]:50051";
 pub async fn rpc_client_run() -> Result<()> {
     loop {
         let mut client = StratumPoolClient::connect(POOL_CONNECT).await?;
-        let request = tonic::Request::new(AuthorizeRequest { id: 1 });
+        let request = tonic::Request::new(AuthorizeRequest {
+            username: "harold".to_owned(),
+            password: "123456".to_owned(),
+        });
         let response = client.mining_authorize(request).await?;
         println!("RESPONSE={:#?}", response.get_ref());
         worker_subscribe(
@@ -50,7 +53,7 @@ pub async fn worker_subscribe(
         worker_rpc_server: worker_rpc_server,
     });
     let response = client.mining_subscribe(request).await?;
-    
+
     println!("RESPONSE={:#?}", response.get_ref());
     Ok(())
 }
