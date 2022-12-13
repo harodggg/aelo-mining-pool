@@ -69,11 +69,19 @@
 //     password: &'a str,
 //     aleo_address: Address<N>,
 // }
-use rocksdb::{Options, DB};
+use rocksdb::{DBCommon, DBWithThreadMode, Options, SingleThreaded, DB};
 
 const DEFAULT_DB_PATH: &str = "./";
 
-#[derive(Default)]
-struct AleoPoolDB {}
+struct AleoPoolDB {
+    db: DBWithThreadMode<SingleThreaded>,
+}
 
-impl AleoPoolDB {}
+impl AleoPoolDB {
+    pub fn open_db() -> Self {
+        AleoPoolDB {
+            db: DB::open_default(DEFAULT_DB_PATH).unwrap(),
+        }
+    }
+    
+}

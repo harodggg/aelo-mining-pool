@@ -1,5 +1,5 @@
 pub mod block_observer;
-mod db;
+pub mod db;
 pub mod rpc;
 pub mod version;
 pub mod block {

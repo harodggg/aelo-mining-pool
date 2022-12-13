@@ -3,42 +3,37 @@ use aleo_pool::version::LOGO;
 
 use aleo_utils::log::log;
 use aleo_utils::print_welcome;
-use clap::Parser;
 use simple_log::info;
+use snarkvm::prelude::{EpochChallenge, FromBytes, Testnet3};
 use tokio::spawn;
-
-#[derive(clap::ValueEnum, Clone)]
-enum State {
-    Run,
-    Stop,
-    Pause,
-}
-
-/// Aelo Mining pool service program
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct Args {
-    /// Starting a aleo mining pool service
-    #[arg(long)]
-    start: bool,
-
-    /// Stoping a aleo mining pool service
-    #[arg(long)]
-    stop: bool,
-}
+use tokio::sync::mpsc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let args = Args::parse();
     log().unwrap();
     print_welcome(LOGO);
     info!("Runing Mining Pool");
+
+    // Building mpsc in many green thread, rpc thread update block, local thread send block by loop
+    let (mut tx, mut rx) = mpsc::channel::<EpochChallenge<Testnet3>>(1);
+    let receive = Arc::clone(&rx);
+    let sender = Arc::clone(&tx);
     spawn(async {
-        run_rpc().await;
+        run_rpc(tx).await;
     });
-    if args.start {
-        println!("start");
-    }
+
+    info!("Starting receive thread");
+    spawn(async move {
+        let mut i = 1;
+        loop {
+            info!("Num:{}", i);
+            for r in rx.recv().await {
+                info!("Other Green Thread:{:?}", r);
+            }
+            i += 1;
+        }
+    });
+
     std::future::pending::<()>().await;
     Ok(())
 }
