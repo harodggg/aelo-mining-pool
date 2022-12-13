@@ -8,13 +8,11 @@ name = "pool"
 path = "./src/main.rs"
 
 [dependencies]
-clap = { version = "4.0.9", features = ["derive"] }
+rocksdb = { version = "0.19.0", default_features = false, features = ["lz4"] }
 aleo-utils = { path = "../aleo-utils" }
+clap = "*"
 anyhow = "*"
 simple-log = "1.6.0"
-redis = "0.22.1"
-mobc-redis = "0.7.0"
-mobc = "0.7.3"
 tonic = "0.8.3"
 prost = "0.11"
 futures-core = "0.3"
