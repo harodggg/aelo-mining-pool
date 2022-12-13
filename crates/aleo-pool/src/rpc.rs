@@ -19,18 +19,18 @@ use tonic::{Request, Response, Status};
 pub struct AleoBlock {
     epoch_challenge: Arc<RwLock<EpochChallenge<Testnet3>>>,
     observers: Arc<RwLock<BlockObserver>>,
-    sender: Arc<RwLock<Sender<EpochChallenge<Testnet3>>>>,
+    sender: Arc<<RwLock<Sender<EpochChallenge<Testnet3>>>>>,
 }
 
 impl AleoBlock {
-    pub fn default(tx: Sender<EpochChallenge<Testnet3>>) -> Self {
+    pub fn default(tx: Arc<Sender<EpochChallenge<Testnet3>>>) -> Self {
         Self {
             epoch_challenge: Arc::new(RwLock::new(
                 EpochChallenge::<Testnet3>::new(0, <Testnet3 as Network>::BlockHash::default(), 3)
                     .unwrap(),
             )),
             observers: Arc::new(RwLock::new(BlockObserver::default())),
-            sender: Arc::new(RwLock::new(tx)),
+            sender: Arc::new(RwLock::new(Arc::clone(&tx))),
         }
     }
 }
@@ -90,7 +90,7 @@ impl AleoBlock {
     fn hello(&self) {}
 }
 
-pub async fn run_rpc(tx: Sender<EpochChallenge<Testnet3>>) {
+pub async fn run_rpc(tx: Arc<Sender<EpochChallenge<Testnet3>>>) {
     let block = AleoBlock::default(tx);
     let stratum_pool = AleoStratumPool::default();
 

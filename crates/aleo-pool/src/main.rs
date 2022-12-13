@@ -16,15 +16,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Building mpsc in many green thread, rpc thread update block, local thread send block by loop
     let (mut tx, mut rx) = mpsc::channel::<EpochChallenge<Testnet3>>(1);
-
+    let receive = Arc::clone(&rx);
+    let sender = Arc::clone(&tx);
     spawn(async {
         run_rpc(tx).await;
     });
+
+    info!("Starting receive thread");
     spawn(async move {
+        let mut i = 1;
         loop {
+            info!("Num:{}", i);
             for r in rx.recv().await {
-                info! {"Other Green Thread:{:?}",r};
+                info!("Other Green Thread:{:?}", r);
             }
+            i += 1;
         }
     });
 
