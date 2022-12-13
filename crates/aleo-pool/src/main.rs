@@ -15,17 +15,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Runing Mining Pool");
 
     // Building mpsc in many green thread, rpc thread update block, local thread send block by loop
-    let (mut tx, mut rx) = mpsc::channel::<EpochChallenge<Testnet3>>(100);
+    let (mut tx, mut rx) = mpsc::channel::<EpochChallenge<Testnet3>>(1);
 
     spawn(async {
         run_rpc(tx).await;
     });
-
-    loop {
-        for r in rx.recv().await {
-            info! {"Other Green Thread:{:?}",r};
+    spawn(async move {
+        loop {
+            for r in rx.recv().await {
+                info! {"Other Green Thread:{:?}",r};
+            }
         }
-    }
+    });
+
     std::future::pending::<()>().await;
     Ok(())
 }
