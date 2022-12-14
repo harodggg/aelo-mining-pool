@@ -27,7 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut i = 1;
         loop {
             info!("Num:{}", i);
-            for r in rx.recv().await {
+            for r in rx {
                 info!("Other Green Thread:{:?}", r);
             }
             i += 1;
